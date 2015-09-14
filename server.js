@@ -26,17 +26,22 @@ app.post('/movie', function (req, res) {
 
     var out = {};
     var stats = {};
-    var strms = 'strms/';
-    var folder = strms + title;
+    var strms = 'strms';
+    var folder = strms + '/' + title;
     var basefile = folder + '/' + title;
     var strmfile = basefile + '.strm';
     var linkfile = basefile + '.link';
 
     try {
         fs.statSync(strms);
-    } catch(e) {
-        fs.mkdirSync(strms);
+    } catch (e) {
+        try {
+            fs.lstatSync(strms);
+        } catch (e) {
+            fs.mkdirSync(strms);
+        }
     }
+
 
     try {
 
