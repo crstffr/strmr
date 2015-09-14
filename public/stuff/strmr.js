@@ -22,6 +22,7 @@ $(function () {
 
         title = title.replace(/\./g, ' ');
         title = title.replace(/(\d{4}).*/, '($1)');
+        title = _toTitleCase(title);
 
         $title.val(title);
 
@@ -63,6 +64,9 @@ $(function () {
                 _error(res.error.msg);
             } else if (res.ok) {
                 _success(res.ok.msg);
+
+                $link.val('');
+                $title.val('');
             }
 
         }).fail(function (res) {
@@ -99,5 +103,10 @@ $(function () {
         $submit.attr('disabled', false);
     }
 
+    function _toTitleCase(str) {
+        return str.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    }
 
 });
