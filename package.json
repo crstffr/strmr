@@ -6,7 +6,10 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "choreographer": "^0.3.0",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "mkdirp": "^0.5.1",
+    "parse-torrent-name": "^0.5.4",
+    "query-string": "^2.4.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -14,5 +17,23 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "jspm": {
+    "directories": {
+      "baseURL": "public",
+      "packages": "public/jspm"
+    },
+    "configFile": "public/system.conf.js",
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.4.7",
+      "css": "github:systemjs/plugin-css@^0.1.18",
+      "font-awesome": "npm:font-awesome@^4.4.0",
+      "normalize.css": "github:necolas/normalize.css@^3.0.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  }
 }

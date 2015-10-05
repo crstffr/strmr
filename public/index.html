@@ -3,38 +3,108 @@
 <head>
     <title>strmr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="stuff/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="stuff/deparam.js"></script>
-    <script src="stuff/strmr.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>[ng-cloak] {
+        display: none;
+    }</style>
+    <script src="jspm/system.js"></script>
+    <script src="system.conf.js"></script>
+    <script>
+        System.import('app/style');
+        System.import('app/strmr').then(function (module) {
+            angular.bootstrap(document, [module.name]);
+        });
+    </script>
 </head>
-<body>
+<body ng-cloak ng-controller="AppController as ctrl">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
             <h1>strmr</h1>
 
-            <form>
-                <div class="form-group">
-                    <label>Magnet Link</label>
-                    <input id="maglink" type="text" name="link" class="form-control">
+            <form name="ctrl.form">
+
+                <div ng-cloak ng-show="ctrl.state.part1">
+
+                    <div class="form-group">
+                        <label>Magnet Link</label>
+                        <input
+                                type="text"
+                                name="link"
+                                ng-model="ctrl.link"
+                                ng-change="ctrl.id()"
+                                ng-model-options="{ debounce: 500 }"
+                                class="form-control">
+                    </div>
+                    <!--
+                    <div class="form-group">
+                        <button
+                                type="submit"
+                                ng-click="ctrl.id()"
+                                class="btn btn-primary">
+                            <i class="fa fa-spinner fa-spin"></i> Identify
+                        </button>
+                    </div>
+                    -->
                 </div>
-                <div class="form-group">
-                    <label>Title</label>
-                    <input id="title" type="text" name="title" class="form-control">
+
+                <div ng-cloak ng-show="ctrl.state.movie">
+
+                    <h2>movie</h2>
+
+                    <div class="form-group col-m">
+                        <input
+                                disabled
+                                type="text"
+                                name="strm"
+                                ng-model="ctrl.strm"
+                                class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" ng-click="ctrl.makeMovie()" class="btn btn-primary">
+                            <i class="fa fa-spinner fa-spin"></i> Create STRM
+                        </button>
+                        <button type="button" ng-click="ctrl.reset()" class="btn btn-link">
+                            Reset
+                        </button>
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <button id="submit" type="button" class="btn btn-primary">
-                        <i class="fa fa-spinner fa-spin"></i> Create STRM
-                    </button>
+
+                <div ng-cloak ng-show="ctrl.state.tvshow">
+
+                    <h2>tvshow</h2>
+
+                    <div class="form-group col-m">
+                        <input
+                                disabled
+                                type="text"
+                                name="strm"
+                                ng-model="ctrl.strm"
+                                class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" ng-click="ctrl.makeTvshow()" class="btn btn-primary">
+                            <i class="fa fa-spinner fa-spin"></i> Create STRM
+                        </button>
+                        <button type="button" ng-click="ctrl.reset()" class="btn btn-link">
+                            Reset
+                        </button>
+                    </div>
+
                 </div>
+
             </form>
 
-            <div id="msgbox"><p></p></div>
+            <div>
+                <p class="text-success" ng-bind="ctrl.msgs.success"></p>
+                <p class="text-danger" ng-bind="ctrl.msgs.error"></p>
+            </div>
 
         </div>
     </div>
