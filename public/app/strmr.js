@@ -71,6 +71,7 @@ function AppController($http) {
                 return;
             }
             if (res.data.ok && res.data.ok.msg) {
+                _reset();
                 _this.msgs.success = res.data.ok.msg;
             }
         });
@@ -88,6 +89,7 @@ function AppController($http) {
                 return;
             }
             if (res.data.ok && res.data.ok.msg) {
+                _reset();
                 _this.msgs.success = res.data.ok.msg;
             }
         });
