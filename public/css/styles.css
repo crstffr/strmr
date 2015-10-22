@@ -9,6 +9,6 @@ button i.fa {
     margin-right: 5px;
 }
 
-button.busy i.fa {
+.busy button i.fa {
     display: inline;
 }

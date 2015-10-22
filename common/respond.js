@@ -1,6 +1,7 @@
 module.exports = {
 
     ok: function(msg) {
+        msg = Array.prototype.join.call(arguments, ' ');
         return JSON.stringify({ok: {msg: msg}});
     },
 
@@ -9,6 +10,7 @@ module.exports = {
     },
 
     error: function(msg) {
+        msg = Array.prototype.join.call(arguments, ' ');
         return JSON.stringify({error: {msg: msg}});
     }
 

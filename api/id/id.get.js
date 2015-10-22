@@ -1,18 +1,19 @@
 var qs = require('query-string');
 var ptn = require('parse-torrent-name');
-var respond = require('../respond');
+var respond = require('../../common/respond');
+var Filemaker = require('../../common/filemaker');
 
 module.exports = function(req, res) {
 
-    var link = req.query.link;
-    var params = qs.parse(link);
-    var name = params.dn;
+    var torrent = new Filemaker(req.query.link);
 
-    if (!name) {
-        res.end(respond.error('Unable to parse torrent name'));
+    if (!torrent.isValid) {
+        res.end(respond.error('Unable to parse magnet link', torrent.errors));
         return;
     }
 
-    res.end(respond.data(ptn(name)));
+    res.end(respond.data({
+        filepath: torrent.filebase
+    }));
 
 };

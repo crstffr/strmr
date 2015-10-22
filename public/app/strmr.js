@@ -1,23 +1,23 @@
 
 var angular = require('angular');
+var focus = require('./focus');
 
-var strmr = angular.module('strmr', []);
+var strmr = angular.module('strmr', ['focus']);
 
 strmr.controller('AppController', AppController);
 
 module.exports = strmr;
 
-AppController.$inject = ['$http'];
+AppController.$inject = ['$http', 'focusService'];
 
-function AppController($http) {
+function AppController($http, focusService) {
 
     var _this = this;
 
     var _states = {
+        busy: false,
         part1: true,
-        part2: false,
-        movie: false,
-        tvshow: false
+        part2: false
     };
 
     var _msgs = {
@@ -30,115 +30,12 @@ function AppController($http) {
 
     _reset();
 
-    this.submit = function() {
-        _clearMsgs();
-        return false;
-    };
-
-    this.id = function() {
-
-        _clearMsgs();
-
-        var link = _this.link;
-
-        if (!link) {
-            _reset();
-            return;
-        }
-
-        $http.get('/id', {params: {link: link}}).then(function(res){
-            if (res.data.error) {
-                _this.msgs.error = res.data.error.msg;
-                return;
-            }
-
-            if (res.data.ok && res.data.ok.data) {
-                _this.torrent = res.data.ok.data;
-                _setupPart2();
-            }
-        });
-    };
-
-    this.makeMovie = function() {
-
-        _clearMsgs();
-
-        $http.post('movie', {
-            link: _this.link
-        }).then(function(res){
-            if (res.data.error) {
-                _this.msgs.error = res.data.error.msg;
-                return;
-            }
-            if (res.data.ok && res.data.ok.msg) {
-                _reset();
-                _this.msgs.success = res.data.ok.msg;
-            }
-        });
-    };
-
-    this.makeTvshow = function() {
-
-        _clearMsgs();
-
-        $http.post('tvshow', {
-            link: _this.link
-        }).then(function(res){
-            if (res.data.error) {
-                _this.msgs.error = res.data.error.msg;
-                return;
-            }
-            if (res.data.ok && res.data.ok.msg) {
-                _reset();
-                _this.msgs.success = res.data.ok.msg;
-            }
-        });
-    };
-
-    function _setupPart2() {
-
-        if (!_this.torrent.title) {
-            _this.msgs.error = 'Returned data does not include a title';
-        }
-
-        if (_this.torrent.season) {
-            _showTvshow();
-        } else {
-            _showMovie();
-        }
-
-    }
-
-    function _showTvshow() {
-        _this.state.tvshow = true;
-        _this.state.movie = false;
-
-        var t = _this.torrent;
-        var s = _zeroPad(t.season, 2);
-        var e = _zeroPad(t.episode, 2);
-
-        var path = t.title + ' S' + s + 'E' + e + ((t.resolution) ? ' ' + t.resolution : '');
-        path = path.replace(/ /g, '.');
-
-        _this.strm = [t.title, 'Season ' + t.season, path].join('/');
-
-    }
-
-    function _showMovie() {
-        _this.state.tvshow = false;
-        _this.state.movie = true;
-
-        var t = _this.torrent;
-        _this.strm = t.title + ' (' + t.year + ')';
-    }
-
-    function _formatStrm() {
-
-    }
-
-    function _zeroPad(num, places) {
-      var zero = places - num.toString().length + 1;
-      return Array(+(zero > 0 && zero)).join("0") + num;
+    function _reset() {
+        _this.state = angular.copy(_states);
+        _this.msgs = angular.copy(_msgs);
+        _this.torrent = {};
+        _this.link = '';
+        focusService.setFocus('link');
     }
 
     function _clearMsgs() {
@@ -146,13 +43,69 @@ function AppController($http) {
         _this.msgs.error = '';
     }
 
-    function _reset() {
-        _this.state = angular.copy(_states);
-        _this.msgs = angular.copy(_msgs);
-        _this.torrent = {};
-        _this.link = '';
+    function _part1() {
+        _this.state.part1 = true;
+        _this.state.part2 = false;
     }
 
+    function _part2() {
+        _this.state.part1 = false;
+        _this.state.part2 = true;
+    }
+
+    function _busy() {
+        _this.state.busy = true;
+    }
+
+    function _done() {
+        _this.state.busy = false;
+    }
+
+    this.id = function() {
+
+        _clearMsgs();
+        var link = _this.link;
+        if (!link) { _reset(); return; }
+
+        $http.get('/id', {params: {link: link}})
+            .then(function(res){
+                if (res.data.error) {
+                    _this.msgs.error = res.data.error.msg;
+                    return;
+                }
+                if (res.data.ok && res.data.ok.data) {
+                    _this.torrent = res.data.ok.data;
+                    _this.strm = _this.torrent.filepath;
+                    _part2();
+
+                    if (!_this.torrent.filepath) {
+                        _this.msgs.error = 'Response does not include a filepath';
+                    }
+                }
+            });
+    };
+
+    this.makeFiles = function() {
+
+        _clearMsgs();
+        _busy();
+
+        $http.post('files', {link: _this.link})
+            .then(function(res){
+                if (res.data.error) {
+                    _this.msgs.error = res.data.error.msg;
+                    return;
+                }
+                if (res.data.ok && res.data.ok.msg) {
+                    _reset();
+                    _this.msgs.success = res.data.ok.msg;
+                }
+            }).catch(function(err){
+                _this.msgs.error = err;
+            }).finally(function(){
+                _done();
+            });
+    };
 }
 /*
 

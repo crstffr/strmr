@@ -8,7 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static('public'));
 
 app.get('/id', require('./api/id/id.get'));
-app.post('/movie', require('./api/movie/movie.post'));
-app.post('/tvshow', require('./api/tvshow/tvshow.post'));
+app.post('/files', require('./api/files/files.post'));
 
-app.listen(808);
+app.listen(8080);
+
+console.log('Server started at: http://localhost:8080');

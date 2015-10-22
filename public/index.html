@@ -34,63 +34,32 @@
                         <input
                                 type="text"
                                 name="link"
+                                focus-on="link"
                                 ng-model="ctrl.link"
                                 ng-change="ctrl.id()"
-                                ng-model-options="{ debounce: 500 }"
+                                ng-model-options="{ debounce: 250 }"
                                 class="form-control">
                     </div>
-                    <!--
-                    <div class="form-group">
+                </div>
+
+                <div ng-cloak ng-show="ctrl.state.part2">
+
+                    <div class="form-group col-m">
+                        <input
+                                disabled
+                                type="text"
+                                name="strm"
+                                ng-model="ctrl.strm"
+                                class="form-control">
+                    </div>
+
+                    <div class="form-group" ng-class="{busy:ctrl.state.busy}">
                         <button
-                                type="submit"
-                                ng-click="ctrl.id()"
-                                class="btn btn-primary">
-                            <i class="fa fa-spinner fa-spin"></i> Identify
-                        </button>
-                    </div>
-                    -->
-                </div>
-
-                <div ng-cloak ng-show="ctrl.state.movie">
-
-                    <h2>movie</h2>
-
-                    <div class="form-group col-m">
-                        <input
-                                disabled
-                                type="text"
-                                name="strm"
-                                ng-model="ctrl.strm"
-                                class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <button type="button" ng-click="ctrl.makeMovie()" class="btn btn-primary">
-                            <i class="fa fa-spinner fa-spin"></i> Create STRM
-                        </button>
-                        <button type="button" ng-click="ctrl.reset()" class="btn btn-link">
-                            Reset
-                        </button>
-                    </div>
-
-                </div>
-
-                <div ng-cloak ng-show="ctrl.state.tvshow">
-
-                    <h2>tvshow</h2>
-
-                    <div class="form-group col-m">
-                        <input
-                                disabled
-                                type="text"
-                                name="strm"
-                                ng-model="ctrl.strm"
-                                class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <button type="button" ng-click="ctrl.makeTvshow()" class="btn btn-primary">
-                            <i class="fa fa-spinner fa-spin"></i> Create STRM
+                            type="button"
+                            class="btn btn-primary"
+                            ng-disabled="ctrl.state.busy"
+                            ng-click="ctrl.makeFiles()">
+                            <i class="fa fa-spinner fa-spin"></i> Create Files
                         </button>
                         <button type="button" ng-click="ctrl.reset()" class="btn btn-link">
                             Reset
