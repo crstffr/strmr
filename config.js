@@ -1,8 +1,8 @@
 module.exports = {
 
     kodi: {
-        //plugin: 'plugin://plugin.video.kmediatorrent/play/'
-        plugin: 'plugin://plugin.video.yatp/?action=play&torrent='
+        plugin: 'plugin://plugin.video.kmediatorrent/play/'
+        //plugin: 'plugin://plugin.video.yatp/?action=play&torrent='
     },
 
     paths: {
