@@ -80,7 +80,7 @@ module.exports = function (link) {
                 Promise.all([
                     _this.makeLink(),
                     _this.makeStrm(),
-                    _this.makeTorrent()
+                    //_this.makeTorrent()
                 ])
                 .then(resolve)
                 .catch(reject);
