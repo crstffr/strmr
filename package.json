@@ -1,12 +1,14 @@
 {
   "name": "strmr",
   "version": "1.0.0",
-  "description": "",
+  "description": "webapp for storing generating strms",
+  "repository": "https://github.com/crstffr/strmr",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.13.3",
     "choreographer": "^0.3.0",
     "express": "^4.13.3",
+    "http-auth": "^2.2.8",
     "jspm": "^0.16.11",
     "magnet-to-torrent": "0.0.9",
     "mkdirp": "^0.5.1",

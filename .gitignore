@@ -1,4 +1,5 @@
 .idea
 strms
-node_modules
 jspm
+node_modules
+*.htpasswd

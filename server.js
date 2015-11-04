@@ -1,8 +1,15 @@
 var fs = require('fs');
+var auth = require('http-auth');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+var authMiddle = auth.connect(auth.basic({
+    realm: '',
+    file: __dirname + '/users.htpasswd'
+}));
+
+// app.use(authMiddle); this doesn't work
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static('public'));
