@@ -108,7 +108,7 @@ module.exports = function (link) {
             return Promise.reject('Cannot make link, magnet is invalid');
         }
         return new Promise(function (resolve, reject) {
-            var file = _this.filebase + '.link';
+            var file = _this.filebase + '.magnet';
             var body = _this.magnet;
             fs.writeFile(file, body, function (err) {
                 (err) ? reject(err) : resolve();
