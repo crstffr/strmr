@@ -12,6 +12,8 @@
     <script src="jspm/system.js"></script>
     <script src="system.conf.js"></script>
     <script>
+        navigator.registerProtocolHandler("magnet", window.location.href + "?uri=%s", "Magnet Links");
+
         System.import('app/style');
         System.import('app/strmr').then(function (module) {
             angular.bootstrap(document, [module.name]);
