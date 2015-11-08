@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>strmr</title>
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
@@ -12,7 +13,11 @@
     <script src="jspm/system.js"></script>
     <script src="system.conf.js"></script>
     <script>
-        navigator.registerProtocolHandler("magnet", window.location.href + "?uri=%s", "Magnet Links");
+
+        // This is what allows us to register this site as a
+        // handler for magnet protocol links.  Works!
+
+        navigator.registerProtocolHandler("magnet", window.location.origin + "/?uri=%s", "Magnet Links");
 
         System.import('app/style');
         System.import('app/strmr').then(function (module) {

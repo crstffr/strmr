@@ -2,15 +2,18 @@
 var angular = require('angular');
 var focus = require('./focus');
 
-var strmr = angular.module('strmr', ['focus']);
+var strmr = angular.module('strmr', ['focus'])
+    .config(function($locationProvider){
+        $locationProvider.html5Mode(true);
+    });
 
 strmr.controller('AppController', AppController);
 
 module.exports = strmr;
 
-AppController.$inject = ['$http', 'focusService'];
+AppController.$inject = ['$http', '$location', 'focusService'];
 
-function AppController($http, focusService) {
+function AppController($http, $location, focusService) {
 
     var _this = this;
 
@@ -25,17 +28,30 @@ function AppController($http, focusService) {
         error: ''
     };
 
+    this.id = _id;
     this.strm = '';
     this.reset = _reset;
+    this.makeFiles = _makeFiles;
 
     _reset();
+    _prefill();
+
+    function _prefill() {
+        if ($location.search().uri) {
+            _this.link = $location.search().uri;
+            $location.url($location.path());
+            _this.id();
+        }
+    }
 
     function _reset() {
         _this.state = angular.copy(_states);
         _this.msgs = angular.copy(_msgs);
         _this.torrent = {};
         _this.link = '';
+
         focusService.setFocus('link');
+
     }
 
     function _clearMsgs() {
@@ -61,7 +77,7 @@ function AppController($http, focusService) {
         _this.state.busy = false;
     }
 
-    this.id = function() {
+    function _id() {
 
         _clearMsgs();
         var link = _this.link;
@@ -83,9 +99,9 @@ function AppController($http, focusService) {
                     }
                 }
             });
-    };
+    }
 
-    this.makeFiles = function() {
+    function _makeFiles() {
 
         _clearMsgs();
         _busy();
