@@ -57,7 +57,7 @@ focus.directive('focusOn', function () {
  * focusService.setFocus('formReset');
  *
  */
-focus.service('focusService', function ($rootScope, $timeout) {
+focus.service('focusService', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
     return {
         setFocus: function (name, scope) {
             $timeout(function () {
@@ -66,6 +66,6 @@ focus.service('focusService', function ($rootScope, $timeout) {
             });
         }
     };
-});
+}]);
 
 

@@ -11,6 +11,22 @@ System.config({
     "github:*": "jspm/github/*",
     "npm:*": "jspm/npm/*"
   },
+  bundles: {
+    "bundle/angular.min.js": [
+      "github:angular/bower-angular@1.4.7",
+      "github:angular/bower-angular@1.4.7/angular"
+    ],
+    "bundle/strmr.min.js": [
+      "app/strmr.js",
+      "app/focus.js",
+      "npm:lodash@3.10.1",
+      "npm:lodash@3.10.1/index",
+      "github:jspm/nodelibs-process@0.1.2",
+      "github:jspm/nodelibs-process@0.1.2/index",
+      "npm:process@0.11.2",
+      "npm:process@0.11.2/browser"
+    ]
+  },
 
   map: {
     "angular": "github:angular/bower-angular@1.4.7",

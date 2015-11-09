@@ -1,15 +1,15 @@
-
 var angular = require('angular');
 var focus = require('./focus');
 
-var strmr = angular.module('strmr', ['focus'])
-    .config(function($locationProvider){
-        $locationProvider.html5Mode(true);
-    });
-
-strmr.controller('AppController', AppController);
+var strmr = angular.module('strmr', ['focus']);
 
 module.exports = strmr;
+
+strmr.config(['$locationProvider', function ($locationProvider) {
+    $locationProvider.html5Mode(true);
+}]);
+
+strmr.controller('AppController', AppController);
 
 AppController.$inject = ['$http', '$location', 'focusService'];
 
@@ -49,9 +49,7 @@ function AppController($http, $location, focusService) {
         _this.msgs = angular.copy(_msgs);
         _this.torrent = {};
         _this.link = '';
-
         focusService.setFocus('link');
-
     }
 
     function _clearMsgs() {
@@ -81,10 +79,13 @@ function AppController($http, $location, focusService) {
 
         _clearMsgs();
         var link = _this.link;
-        if (!link) { _reset(); return; }
+        if (!link) {
+            _reset();
+            return;
+        }
 
         $http.get('/id', {params: {link: link}})
-            .then(function(res){
+            .then(function (res) {
                 if (res.data.error) {
                     _this.msgs.error = res.data.error.msg;
                     return;
@@ -107,7 +108,7 @@ function AppController($http, $location, focusService) {
         _busy();
 
         $http.post('files', {link: _this.link})
-            .then(function(res){
+            .then(function (res) {
                 if (res.data.error) {
                     _this.msgs.error = res.data.error.msg;
                     return;
@@ -116,137 +117,137 @@ function AppController($http, $location, focusService) {
                     _reset();
                     _this.msgs.success = res.data.ok.msg;
                 }
-            }).catch(function(err){
+            }).catch(function (err) {
                 _this.msgs.error = err;
-            }).finally(function(){
+            }).finally(function () {
                 _done();
             });
     };
 }
 /*
 
-return;
+ return;
 
-$(function () {
-
-
-    // Look into:
-    //
-    // https://www.npmjs.com/package/parse-torrent-name
-    // Parses the torrent name into a nice object structure
-
-    // https://www.npmjs.com/package/node-tracker
-    // https://github.com/jduncanator/bittorrent-tracker
-    // Connect to trackers to get peer info - seeders/leechers
-
-    // https://www.npmjs.com/package/kodi-ws
-    // Kodi JSON RPC library, possibly update library automatically
-    // (but that would require HTPC to have ext IP address)
-
-    // https://kat.cr/json.php?q=mouth%20of%20madness&field=seeders&order=desc
-    // https://www.npmjs.com/package/kat-api
-    // KickAss Torrents JSON API, can be used to locate torrents
-
-    var $link = $("#maglink");
-    var $title = $("#title");
-    var $submit = $("#submit");
-    var $msgbox = $("#msgbox p");
-
-    $msgbox.hide();
-
-    $link.on('change', function (event) {
-
-        var $this = $(this);
-
-        var obj = {};
-        var title = '';
-        var str = $this.val();
-
-        str = decodeURIComponent(str);
-        obj = $.deparam(str);
-
-        title = obj.dn || '';
+ $(function () {
 
 
-    });
+ // Look into:
+ //
+ // https://www.npmjs.com/package/parse-torrent-name
+ // Parses the torrent name into a nice object structure
+
+ // https://www.npmjs.com/package/node-tracker
+ // https://github.com/jduncanator/bittorrent-tracker
+ // Connect to trackers to get peer info - seeders/leechers
+
+ // https://www.npmjs.com/package/kodi-ws
+ // Kodi JSON RPC library, possibly update library automatically
+ // (but that would require HTPC to have ext IP address)
+
+ // https://kat.cr/json.php?q=mouth%20of%20madness&field=seeders&order=desc
+ // https://www.npmjs.com/package/kat-api
+ // KickAss Torrents JSON API, can be used to locate torrents
+
+ var $link = $("#maglink");
+ var $title = $("#title");
+ var $submit = $("#submit");
+ var $msgbox = $("#msgbox p");
+
+ $msgbox.hide();
+
+ $link.on('change', function (event) {
+
+ var $this = $(this);
+
+ var obj = {};
+ var title = '';
+ var str = $this.val();
+
+ str = decodeURIComponent(str);
+ obj = $.deparam(str);
+
+ title = obj.dn || '';
 
 
-    $submit.on('click', function () {
-
-        $msgbox.hide();
-
-        var link = $link.val();
-        var title = $title.val();
-
-        if (!link) {
-            _error('Link not specified');
-            return;
-        }
-
-        if (!title) {
-            _error('Title not specified');
-            return;
-        }
-
-        _busy();
-
-        $.ajax({
-            url: '/movie',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                link: link,
-                title: title
-            }
-        }).done(function (res) {
-
-            console.log(res);
-
-            if (res.error) {
-                _error(res.error.msg);
-            } else if (res.ok) {
-                _success(res.ok.msg);
-
-                $link.val('');
-                $title.val('');
-            }
-
-        }).fail(function (res) {
-
-            console.error(res);
-
-        }).always(function () {
-            _ready();
-        });
-
-    });
-
-    function _error(what) {
-        $msgbox.text(what)
-            .addClass('text-danger')
-            .removeClass('text-success')
-            .show();
-    }
-
-    function _success(what) {
-        $msgbox.text(what)
-            .addClass('text-success')
-            .removeClass('text-danger')
-            .show();
-    }
-
-    function _busy() {
-        $submit.addClass('busy');
-        $submit.attr('disabled', true);
-    }
-
-    function _ready() {
-        $submit.removeClass('busy');
-        $submit.attr('disabled', false);
-    }
+ });
 
 
+ $submit.on('click', function () {
 
-});
+ $msgbox.hide();
 
-*/
+ var link = $link.val();
+ var title = $title.val();
+
+ if (!link) {
+ _error('Link not specified');
+ return;
+ }
+
+ if (!title) {
+ _error('Title not specified');
+ return;
+ }
+
+ _busy();
+
+ $.ajax({
+ url: '/movie',
+ type: 'POST',
+ dataType: 'json',
+ data: {
+ link: link,
+ title: title
+ }
+ }).done(function (res) {
+
+ console.log(res);
+
+ if (res.error) {
+ _error(res.error.msg);
+ } else if (res.ok) {
+ _success(res.ok.msg);
+
+ $link.val('');
+ $title.val('');
+ }
+
+ }).fail(function (res) {
+
+ console.error(res);
+
+ }).always(function () {
+ _ready();
+ });
+
+ });
+
+ function _error(what) {
+ $msgbox.text(what)
+ .addClass('text-danger')
+ .removeClass('text-success')
+ .show();
+ }
+
+ function _success(what) {
+ $msgbox.text(what)
+ .addClass('text-success')
+ .removeClass('text-danger')
+ .show();
+ }
+
+ function _busy() {
+ $submit.addClass('busy');
+ $submit.attr('disabled', true);
+ }
+
+ function _ready() {
+ $submit.removeClass('busy');
+ $submit.attr('disabled', false);
+ }
+
+
+
+ });
+
+ */
