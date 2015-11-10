@@ -1,8 +1,6 @@
 // Prevent the server from running as root
 var uid = parseInt(process.env.SUDO_UID);
-if (uid) {
-    process.setuid(uid);
-}
+if (uid) { process.setuid(uid); }
 
 var fs = require('fs');
 var https = require('https');
