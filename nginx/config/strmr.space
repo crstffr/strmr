@@ -9,12 +9,13 @@ server {
     server_name strmr.space;
     ssl_certificate /etc/nginx/ssl/nginx.crt;
     ssl_certificate_key /etc/nginx/ssl/nginx.key;
-    root /var/www/strmr.space/public;
+    root /home/ubuntu/strmr/nginx/public;
     index index.html index.htm;
 
     location /media {
         autoindex on;
         auth_basic "strmr";
         auth_basic_user_file /etc/nginx/.htpasswd;
+        root /home/ubuntu/strmr;
     }
 }
