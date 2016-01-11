@@ -11,6 +11,35 @@ System.config({
     "github:*": "jspm/github/*",
     "npm:*": "jspm/npm/*"
   },
+  bundles: {
+    "bundle/angular.min.js": [
+      "github:angular/bower-angular@1.4.7",
+      "github:angular/bower-angular@1.4.7/angular"
+    ],
+    "bundle/style.min.js": [
+      "app/style.js",
+      "github:necolas/normalize.css@3.0.3",
+      "style/strmr.css!github:systemjs/plugin-css@0.1.19",
+      "github:twbs/bootstrap@4.0.0-alpha/css/bootstrap.min.css!github:systemjs/plugin-css@0.1.19",
+      "npm:font-awesome@4.4.0/css/font-awesome.min.css!github:systemjs/plugin-css@0.1.19",
+      "github:necolas/normalize.css@3.0.3/normalize.css!github:systemjs/plugin-css@0.1.19"
+    ],
+    "bundle/strmr.min.js": [
+      "app/strmr.js",
+      "app/focus.js",
+      "app/auth.js",
+      "app/settings.js",
+      "npm:lodash@3.10.1",
+      "app/ref.js",
+      "github:firebase/firebase-bower@2.3.2",
+      "npm:lodash@3.10.1/index",
+      "github:firebase/firebase-bower@2.3.2/firebase",
+      "github:jspm/nodelibs-process@0.1.2",
+      "github:jspm/nodelibs-process@0.1.2/index",
+      "npm:process@0.11.2",
+      "npm:process@0.11.2/browser"
+    ]
+  },
 
   map: {
     "angular": "github:angular/bower-angular@1.4.7",
