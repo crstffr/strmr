@@ -1,0 +1,11 @@
+{
+  "firebase": "strmr",
+  "public": "./",
+  "ignore": [
+    "jspm/github/**/*",
+    "jspm/npm/**/*",
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

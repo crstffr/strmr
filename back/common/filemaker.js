@@ -1,3 +1,5 @@
+
+
 var fs = require('fs');
 var qs = require('query-string');
 var ptn = require('parse-torrent-name');
@@ -5,7 +7,7 @@ var mag2tor = require('magnet-to-torrent');
 var request = require('request');
 var mkdirp = require('mkdirp');
 var zeropad = require('./zeropad');
-var config = require('../config');
+var config = require('./config');
 
 /**
  *

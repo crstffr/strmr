@@ -3,19 +3,8 @@
   "version": "1.0.0",
   "description": "webapp for storing generating strms",
   "repository": "https://github.com/crstffr/strmr",
-  "main": "server.js",
-  "dependencies": {
-    "body-parser": "^1.13.3",
-    "choreographer": "^0.3.0",
-    "express": "^4.13.3",
-    "http-auth": "^2.2.8",
-    "jspm": "^0.16.11",
-    "magnet-to-torrent": "0.0.9",
-    "mkdirp": "^0.5.1",
-    "parse-torrent-name": "^0.5.4",
-    "query-string": "^2.4.2",
-    "request": "^2.65.0"
-  },
+  "main": "index.html",
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,15 +14,14 @@
   "license": "ISC",
   "jspm": {
     "directories": {
-      "baseURL": "public",
-      "packages": "public/jspm"
+      "packages": "jspm"
     },
-    "configFile": "public/system.conf.js",
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.7",
       "bootstrap": "github:twbs/bootstrap@4.0.0-alpha",
       "clean-css": "npm:clean-css@^3.4.6",
       "css": "github:systemjs/plugin-css@^0.1.18",
+      "firebase": "github:firebase/firebase-bower@^2.3.2",
       "font-awesome": "npm:font-awesome@^4.4.0",
       "lodash": "npm:lodash@^3.10.1",
       "normalize.css": "github:necolas/normalize.css@^3.0.3"

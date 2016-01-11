@@ -1,0 +1,23 @@
+{
+  "name": "serverless-strmr",
+  "version": "0.0.1",
+  "profile": "serverless-0",
+  "location": "https://github.com/...",
+  "author": "",
+  "description": "",
+  "domain": "strmr.space",
+  "stages": {
+    "development": [
+      {
+        "region": "us-east-1",
+        "iamRoleArnLambda": "arn:aws:iam::703798892874:role/serverless-strmr-development-r-IamRoleLambda-1EE0DL3HEP26R",
+        "regionBucket": "serverless.useast1.strmr.space",
+        "restApiId": "p5bcrlcd8j"
+      }
+    ]
+  },
+  "custom": {},
+  "plugins": [{
+    "path": "serverless-serve"
+  }]
+}

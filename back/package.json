@@ -1,0 +1,20 @@
+{
+  "name": "back",
+  "version": "0.0.1",
+  "description": "Dependencies for a Serverless Module written in Node.js",
+  "author": "me",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/"
+  },
+  "keywords": [],
+  "devDependencies": {},
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "parse-torrent-name": "^0.5.4",
+    "query-string": "^3.0.0",
+    "serverless-helpers-js": "~0.0.3"
+  }
+}
