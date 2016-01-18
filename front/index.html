@@ -14,7 +14,7 @@
 
         navigator.registerProtocolHandler("magnet", window.location.origin + "/?uri=%s", "Magnet Links");
 
-        System.import('app/style');
+        System.import('style/style');
         System.import('app/strmr').then(function (module) {
             angular.bootstrap(document, [module.name]);
         });
@@ -27,20 +27,31 @@
 
             <h1>strmr</h1>
 
-            <div ng-if="!ctrl.auth.loggedIn">
-                <a class="btn btn-primary" ng-click="ctrl.auth.login()">Login</a>
-            </div>
+            <div class="auth-buttons">
+                <div ng-if="!ctrl.auth.loggedIn" ng-class="{busy:ctrl.state.login}">
+                    <button
+                       tabindex="1"
+                       focus-on="login"
+                       class="btn btn-primary"
+                       ng-disabled="ctrl.state.login"
+                       ng-click="ctrl.login()">
+                       <i class="fa fa-spinner fa-spin"></i> Login</button>
+                </div>
 
-            <div ng-if="ctrl.auth.loggedIn">
-                <a class="btn btn-primary" ng-click="ctrl.auth.logout()">Logout</a>
+                <div ng-if="ctrl.auth.loggedIn">
 
-                <div ng-if="!ctrl.auth.valid">
-                    You are logged in, but you do not have access to this app.
+                    <a href=""
+                       tabindex="1"
+                       class="btn btn-primary"
+                       ng-click="ctrl.auth.logout()">Logout</a>
+
+                    <div ng-if="!ctrl.auth.validUser">
+                        <p>You are logged in, but you do not have access to this app.</p>
+                    </div>
                 </div>
             </div>
 
-            <form name="ctrl.form" ng-if="ctrl.auth.valid">
-
+            <form name="ctrl.form" ng-if="ctrl.auth.validUser">
 
                 <div ng-cloak ng-show="ctrl.state.part1">
 
@@ -60,11 +71,12 @@
                 <div ng-cloak ng-show="ctrl.state.part2">
 
                     <div class="form-group col-m">
+                        <label>Path</label>
                         <input
                                 disabled
                                 type="text"
                                 name="strm"
-                                ng-model="ctrl.strm"
+                                ng-model="ctrl.magnet.firekey"
                                 class="form-control">
                     </div>
 
@@ -73,8 +85,8 @@
                             type="button"
                             class="btn btn-primary"
                             ng-disabled="ctrl.state.busy"
-                            ng-click="ctrl.makeFiles()">
-                            <i class="fa fa-spinner fa-spin"></i> Create Files
+                            ng-click="ctrl.save()">
+                            <i class="fa fa-spinner fa-spin"></i> Save
                         </button>
                         <button type="button" ng-click="ctrl.reset()" class="btn btn-link">
                             Reset

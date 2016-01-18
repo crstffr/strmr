@@ -5,7 +5,9 @@
   "repository": "https://github.com/crstffr/strmr",
   "main": "index.html",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "jspm": "^0.16.23"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -24,7 +26,11 @@
       "firebase": "github:firebase/firebase-bower@^2.3.2",
       "font-awesome": "npm:font-awesome@^4.4.0",
       "lodash": "npm:lodash@^3.10.1",
-      "normalize.css": "github:necolas/normalize.css@^3.0.3"
+      "normalize.css": "github:necolas/normalize.css@^3.0.3",
+      "parse-torrent-name": "npm:parse-torrent-name@^0.5.4",
+      "promise.prototype.finally": "npm:promise.prototype.finally@^1.0.1",
+      "query-string": "npm:query-string@^3.0.0",
+      "rpg": "npm:rpg@^0.1.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

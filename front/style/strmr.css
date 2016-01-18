@@ -3,6 +3,10 @@
     margin-top: 2em;
 }
 
+.auth-buttons {
+    margin-bottom: 16px;
+}
+
 button i.fa {
     display: none;
     margin-right: 5px;

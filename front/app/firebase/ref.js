@@ -1,5 +1,5 @@
 
 var Firebase = require('firebase');
-var settings = require('./settings');
+var settings = require('app/settings');
 
 module.exports = new Firebase(settings.firebaseURL);
