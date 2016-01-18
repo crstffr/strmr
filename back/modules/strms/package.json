@@ -1,7 +1,7 @@
 {
   "name": "strms",
-  "version": "0.0.1",
-  "description": "Dependencies for a Serverless Module written in Node.js",
+  "version": "0.1.0",
+  "description": "List strms for a given user",
   "author": "me",
   "license": "MIT",
   "private": true,
@@ -13,6 +13,7 @@
   "devDependencies": {},
   "dependencies": {
     "firebase": "^2.3.2",
+    "lodash": "^4.0.0",
     "serverless-helpers-js": "~0.0.3"
   }
 }

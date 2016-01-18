@@ -7,7 +7,7 @@
       },
       "handler": "modules/strms/movies/movies.handler",
       "timeout": 6,
-      "memorySize": 1024,
+      "memorySize": 256,
       "eventSourceArn": "",
       "endpoints": [
         {
@@ -17,7 +17,7 @@
           "apiKeyRequired": false,
           "requestParameters": {},
           "requestTemplates": {
-            "application/json": ""
+            "application/json": "{\"u\":\"$input.params('u')\", \"p\":\"$input.params('p')\"}"
           },
           "responses": {
             "400": {
@@ -25,10 +25,14 @@
             },
             "default": {
               "statusCode": "200",
-              "responseParameters": {},
-              "responseModels": {},
+              "responseParameters": {
+
+              },
+              "responseModels": {
+                "text/html": "Empty"
+              },
               "responseTemplates": {
-                "application/json": ""
+                "text/html": "$input.path('$').data"
               }
             }
           }

@@ -84,6 +84,7 @@ function AppController($http, $rootScope, $location, focusService) {
     function _part2() {
         _this.state.part1 = false;
         _this.state.part2 = true;
+        focusService.setFocus('save');
     }
 
     function _busy() {
