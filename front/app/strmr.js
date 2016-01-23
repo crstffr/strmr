@@ -2,6 +2,7 @@ var angular = require('angular');
 var Magnet = require('app/common/magnet');
 var focus = require('app/common/forms/focus');
 var current = require('app/common/current');
+var search = require('app/common/search');
 var settings = require('app/settings');
 var auth = require('app/common/auth');
 var Strm = require('app/data/strm');
@@ -25,7 +26,9 @@ function AppController($http, $rootScope, $location, focusService) {
         busy: false,
         part1: true,
         part2: false,
-        login: false
+        login: false,
+        poster: false,  // busy state when fetching poster
+        info: false     // busy state when fetching imdb info
     };
 
     var _msgs = {
@@ -35,6 +38,10 @@ function AppController($http, $rootScope, $location, focusService) {
 
     this.id = _id;
     this.auth = auth;
+    this.info = {};
+    this.magnet = {};
+    this.poster = {};
+
     this.save = _save;
     this.login = _login;
     this.reset = _reset;
@@ -147,10 +154,35 @@ function AppController($http, $rootScope, $location, focusService) {
         if (!_this.magnet.isValid) {
             _this.msgs.error = 'Link is not a valid magnet';
         } else {
+            _search();
             _part2();
         }
 
     }
+
+
+    function _search() {
+
+        var title = _this.magnet.properties.title;
+        var year = _this.magnet.properties.year;
+
+        _this.state.poster = true;
+        _this.state.title = true;
+
+        search.posters(title, year).then(function(posters){
+            _this.poster = posters[0];
+            _this.state.poster = false;
+            $rootScope.$applyAsync();
+        });
+
+        search.titles(title, year).then(function(info){
+            console.log(info);
+            _this.info = info;
+            $rootScope.$applyAsync();
+        });
+
+    }
+
 
     function _save() {
 

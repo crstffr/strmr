@@ -11,12 +11,72 @@ System.config({
     "github:*": "jspm/github/*",
     "npm:*": "jspm/npm/*"
   },
+  bundles: {
+    "bundle/angular.min.js": [
+      "github:angular/bower-angular@1.4.8",
+      "github:angular/bower-angular@1.4.8/angular"
+    ],
+    "bundle/style.min.js": [
+      "style/style.js",
+      "github:necolas/normalize.css@3.0.3",
+      "github:twbs/bootstrap@4.0.0-alpha/css/bootstrap.min.css!github:systemjs/plugin-css@0.1.19",
+      "style/strmr.css!github:systemjs/plugin-css@0.1.19",
+      "github:necolas/normalize.css@3.0.3/normalize.css!github:systemjs/plugin-css@0.1.19"
+    ],
+    "bundle/strmr.min.js": [
+      "app/strmr.js",
+      "app/settings.js",
+      "app/common/current.js",
+      "app/common/search.js",
+      "app/common/magnet.js",
+      "app/common/forms/focus.js",
+      "app/common/auth.js",
+      "app/data/strm.js",
+      "npm:lodash@3.10.1",
+      "app/utils/zeropad.js",
+      "app/utils/cleankey.js",
+      "npm:rpg@0.1.0",
+      "app/common/request.js",
+      "app/data/user.js",
+      "npm:query-string@3.0.0",
+      "npm:parse-torrent-name@0.5.4",
+      "app/firebase/ref.js",
+      "npm:promise.prototype.finally@1.0.1",
+      "npm:store@1.3.20",
+      "npm:lodash@3.10.1/index",
+      "npm:rpg@0.1.0/lib/rpg",
+      "app/data/users.js",
+      "npm:browser-request@0.3.3",
+      "npm:parse-torrent-name@0.5.4/index",
+      "npm:query-string@3.0.0/index",
+      "npm:promise.prototype.finally@1.0.1/finally",
+      "github:firebase/firebase-bower@2.3.2",
+      "npm:store@1.3.20/store",
+      "github:jspm/nodelibs-process@0.1.2",
+      "npm:strict-uri-encode@1.1.0",
+      "npm:parse-torrent-name@0.5.4/parts/common",
+      "npm:parse-torrent-name@0.5.4/parts/title",
+      "npm:parse-torrent-name@0.5.4/parts/excess",
+      "npm:browser-request@0.3.3/index",
+      "npm:parse-torrent-name@0.5.4/core",
+      "github:firebase/firebase-bower@2.3.2/firebase",
+      "github:jspm/nodelibs-process@0.1.2/index",
+      "npm:strict-uri-encode@1.1.0/index",
+      "github:jspm/nodelibs-events@0.1.1",
+      "npm:process@0.11.2",
+      "github:jspm/nodelibs-events@0.1.1/index",
+      "npm:process@0.11.2/browser",
+      "npm:events@1.0.2",
+      "npm:events@1.0.2/events"
+    ]
+  },
 
   map: {
     "angular": "github:angular/bower-angular@1.4.8",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "bootstrap": "github:twbs/bootstrap@4.0.0-alpha",
+    "browser-request": "npm:browser-request@0.3.3",
     "clean-css": "npm:clean-css@3.4.6",
     "core-js": "npm:core-js@1.2.5",
     "css": "github:systemjs/plugin-css@0.1.19",
@@ -82,6 +142,9 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "npm:babel-runtime@5.8.29": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:browser-request@0.3.3": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:buffer@3.6.0": {
