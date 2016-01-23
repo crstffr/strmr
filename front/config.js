@@ -11,59 +11,6 @@ System.config({
     "github:*": "jspm/github/*",
     "npm:*": "jspm/npm/*"
   },
-  bundles: {
-    "bundle/angular.min.js": [
-      "github:angular/bower-angular@1.4.8",
-      "github:angular/bower-angular@1.4.8/angular"
-    ],
-    "bundle/style.min.js": [
-      "style/style.js",
-      "github:necolas/normalize.css@3.0.3",
-      "github:twbs/bootstrap@4.0.0-alpha/css/bootstrap.min.css!github:systemjs/plugin-css@0.1.19",
-      "style/strmr.css!github:systemjs/plugin-css@0.1.19",
-      "github:necolas/normalize.css@3.0.3/normalize.css!github:systemjs/plugin-css@0.1.19"
-    ],
-    "bundle/strmr.min.js": [
-      "app/strmr.js",
-      "app/common/current.js",
-      "app/common/magnet.js",
-      "app/common/forms/focus.js",
-      "app/common/auth.js",
-      "app/data/strm.js",
-      "npm:lodash@3.10.1",
-      "app/utils/zeropad.js",
-      "app/utils/cleankey.js",
-      "app/data/user.js",
-      "npm:query-string@3.0.0",
-      "npm:parse-torrent-name@0.5.4",
-      "npm:promise.prototype.finally@1.0.1",
-      "app/settings.js",
-      "app/firebase/ref.js",
-      "npm:rpg@0.1.0",
-      "npm:lodash@3.10.1/index",
-      "npm:parse-torrent-name@0.5.4/index",
-      "npm:query-string@3.0.0/index",
-      "npm:promise.prototype.finally@1.0.1/finally",
-      "app/data/users.js",
-      "npm:rpg@0.1.0/lib/rpg",
-      "github:firebase/firebase-bower@2.3.2",
-      "github:jspm/nodelibs-process@0.1.2",
-      "npm:parse-torrent-name@0.5.4/parts/common",
-      "npm:parse-torrent-name@0.5.4/parts/title",
-      "npm:parse-torrent-name@0.5.4/parts/excess",
-      "npm:parse-torrent-name@0.5.4/core",
-      "npm:strict-uri-encode@1.1.0",
-      "github:jspm/nodelibs-process@0.1.2/index",
-      "github:firebase/firebase-bower@2.3.2/firebase",
-      "github:jspm/nodelibs-events@0.1.1",
-      "npm:strict-uri-encode@1.1.0/index",
-      "npm:process@0.11.2",
-      "github:jspm/nodelibs-events@0.1.1/index",
-      "npm:process@0.11.2/browser",
-      "npm:events@1.0.2",
-      "npm:events@1.0.2/events"
-    ]
-  },
 
   map: {
     "angular": "github:angular/bower-angular@1.4.8",
@@ -80,6 +27,7 @@ System.config({
     "promise.prototype.finally": "npm:promise.prototype.finally@1.0.1",
     "query-string": "npm:query-string@3.0.0",
     "rpg": "npm:rpg@0.1.0",
+    "store": "npm:store@1.3.20",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -217,6 +165,10 @@ System.config({
     "npm:source-map@0.4.4": {
       "amdefine": "npm:amdefine@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:store@1.3.20": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",

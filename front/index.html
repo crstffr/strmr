@@ -29,7 +29,8 @@
             <h1>strmr</h1>
 
             <div class="auth-buttons">
-                <div ng-if="!ctrl.auth.loggedIn" ng-class="{busy:ctrl.state.login}">
+                <div ng-if="!ctrl.auth.loggedIn || ctrl.auth.loggedIn && ctrl.auth.busy"
+                     ng-class="{busy: ctrl.auth.busy}">
                     <button
                        tabindex="1"
                        focus-on="login"
@@ -39,15 +40,25 @@
                        <i class="fa fa-spinner fa-spin"></i> Login</button>
                 </div>
 
-                <div ng-if="ctrl.auth.loggedIn">
+                <div ng-if="!ctrl.auth.busy && ctrl.auth.loggedIn">
 
                     <a href=""
                        tabindex="1"
                        class="btn btn-primary"
                        ng-click="ctrl.auth.logout()">Logout</a>
 
-                    <div ng-if="!ctrl.auth.validUser">
-                        <p>You are logged in, but you do not have access to this app.</p>
+                    <span ng-if="ctrl.auth.validUser">
+                        <a target="_blank"
+                           tabindex="1"
+                           class="btn"
+                           href="{{ctrl.links.movies}}">Your Movies</a>
+                   </span>
+
+                    <div ng-if="!ctrl.auth.busy && !ctrl.auth.validUser">
+                        <br/>
+                        <div class="alert alert-danger">
+                            <strong>No Dice.</strong> You are logged in, but you do not have access.
+                        </div>
                     </div>
                 </div>
             </div>

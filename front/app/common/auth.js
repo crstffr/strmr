@@ -4,6 +4,7 @@ var fbref = require('app/firebase/ref');
 var settings = require('app/settings');
 var current = require('app/common/current');
 var User = require('app/data/user');
+var store = require('store');
 
 require('promise.prototype.finally');
 
@@ -12,6 +13,9 @@ module.exports = new Auth();
 function Auth() {
 
     var _this = this;
+
+    var _user = '';
+    var _pass = '';
 
     this.data = {};
     this.busy = false;
@@ -27,12 +31,12 @@ function Auth() {
         },
         loggedIn: {
             get: function () {
-                return !_this.busy && !_.isEmpty(_this.data);
+                return !_.isEmpty(_this.data);
             }
         },
         validUser: {
             get: function () {
-                return !_this.busy && _this.loggedIn && _this.data.provider === 'password';
+                return _this.loggedIn && _this.data.provider === 'password';
             }
         },
         validGithubUser: {
@@ -43,19 +47,18 @@ function Auth() {
         }
     });
 
+    /**
+     *
+     */
     fbref.onAuth(function (authData) {
-        if (_this.validUser) {
-            console.log('on auth change', authData);
-            current.user = new User(authData);
-        } else {
-            current.user = null;
-        }
+        current.user = new User(authData);
     });
 
     /**
      *
      */
     this.logout = function () {
+        current.user.creds = null;
         fbref.unauth();
     };
 
@@ -69,7 +72,7 @@ function Auth() {
 
         return _loginWithGithub().catch(function(err){
             console.error('Error logging in', err);
-        }).finally(function(){
+        }).finally(function() {
             _this.busy = false;
         });
 
@@ -102,7 +105,7 @@ function Auth() {
                 } else {
 
                     if (_this.validGithubUser) {
-                        _loginWithUserPass(authData).then(resolve).catch(reject);
+                        _loginWithUserToken(authData).then(resolve).catch(reject);
                     } else {
                         reject('You are logged in, but do not have access to this app');
                     }
@@ -118,21 +121,28 @@ function Auth() {
      * @returns {Promise}
      * @private
      */
-    function _loginWithUserPass(authData) {
+    function _loginWithUserToken(authData) {
 
         return new Promise(function(resolve, reject){
 
-            _getUserPass(authData).then(function(userData){
+            _getUserToken(authData).then(function(userData){
 
                 fbref.authWithPassword({
+
                     email: userData.email,
-                    password: userData.password
+                    password: userData.token
 
                 }, function(err, data) {
 
                     if (err) {
                         reject(err);
                     } else {
+
+                        store.set('creds', {
+                            email: userData.email,
+                            token: userData.token
+                        });
+
                         resolve(data);
                     }
                 });
@@ -151,19 +161,19 @@ function Auth() {
      * @returns {Promise}
      * @private
      */
-    function _getUserPass(authData) {
+    function _getUserToken(authData) {
 
         return new Promise(function(resolve, reject){
 
             fbref.child('auth').child(authData.uid).once('value', function(snap) {
 
-               if (snap.hasChild('email') && snap.hasChild('password')) {
+               if (snap.hasChild('email') && snap.hasChild('token')) {
 
                     resolve(snap.val());
 
                } else {
 
-                    _convertToUserPass(authData).then(resolve).catch(reject);
+                    _convertToUserToken(authData).then(resolve).catch(reject);
 
                }
             });
@@ -176,13 +186,13 @@ function Auth() {
      * @returns {Promise}
      * @private
      */
-    function _convertToUserPass(authData) {
+    function _convertToUserToken(authData) {
 
         return new Promise(function (resolve, reject) {
 
             var settings = {
                 email: _.kebabCase(authData.uid) + '@strmr.space',
-                password: rpg({length: 30, set: 'lud'})
+                password: rpg({length: 60, set: 'lud'})
             };
 
             fbref.createUser(settings, function (err, data) {
@@ -194,7 +204,7 @@ function Auth() {
                 } else {
 
                     settings = _.assign(data, settings);
-                    _saveUserPass(authData.uid, settings);
+                    _saveUserToken(authData.uid, settings);
                     resolve(settings);
                 }
             });
@@ -208,9 +218,12 @@ function Auth() {
      * @param settings
      * @private
      */
-    function _saveUserPass(uid, settings) {
+    function _saveUserToken(uid, settings) {
 
-        fbref.child('auth').child(uid).set(settings);
+        fbref.child('auth').child(uid).set({
+            email: settings.email,
+            token: settings.password
+        });
 
     }
 

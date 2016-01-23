@@ -2,6 +2,7 @@ var angular = require('angular');
 var Magnet = require('app/common/magnet');
 var focus = require('app/common/forms/focus');
 var current = require('app/common/current');
+var settings = require('app/settings');
 var auth = require('app/common/auth');
 var Strm = require('app/data/strm');
 
@@ -38,16 +39,19 @@ function AppController($http, $rootScope, $location, focusService) {
     this.login = _login;
     this.reset = _reset;
 
+    this.links = {
+        movies: '',
+        tvshows: ''
+    };
+
     _reset();
     _prefill();
 
     auth.onChange(function(user){
         $rootScope.$applyAsync();
-        if (user) {
-            window.user = user;
-            console.log('window.user', user);
-            focusService.setFocus('link');
-            _this.state.login = false;
+        if (user && _this.auth.validUser) {
+            _this.user = user;
+            _userLoggedin();
         }
     });
 
@@ -59,6 +63,7 @@ function AppController($http, $rootScope, $location, focusService) {
     }
 
     function _reset() {
+
         _this.state = angular.copy(_states);
         _this.msgs = angular.copy(_msgs);
         _this.torrent = {};
@@ -70,6 +75,28 @@ function AppController($http, $rootScope, $location, focusService) {
             focusService.setFocus('login');
         }
     }
+
+    function _userLoggedin() {
+        window.user = current.user;
+        focusService.setFocus('link');
+        _this.state.login = false;
+        _buildLinks();
+    }
+
+
+    function _buildLinks() {
+
+        var base = settings.strmsURL;
+
+        var cred = '?';
+        cred +=  'u=' + current.user.email;
+        cred += '&p=' + current.user.token;
+
+        _this.links.movies = base + 'movies/' + cred;
+        _this.links.tvshows = base + 'tvshows/' + cred;
+
+    }
+
 
     function _clearMsgs() {
         _this.msgs.success = '';
@@ -98,7 +125,10 @@ function AppController($http, $rootScope, $location, focusService) {
     function _login() {
         _this.state.login = true;
         _this.auth.login().then(function(){
+
+            _buildLinks();
             _this.state.login = false;
+
         });
     }
 

@@ -80,7 +80,7 @@ function Magnet(link) {
         firekey: {
             enumerable: false,
             get: function() {
-                return cleankey(_this.filepath + _this.filename);
+                return cleankey((_this.isTV) ? _tvshowFirekey() : _movieFirekey());
             }
         }
     });
@@ -100,8 +100,16 @@ function Magnet(link) {
         return 'tvshows/' + _data.title + '/Season ' + zeropad(_data.season, 2) + '/';
     }
 
+    function _tvshowFirekey() {
+        return 'tvshows/' + _tvshowFilename();
+    }
+
     function _movieFolder() {
         return 'movies/' + _data.title + ' (' + _data.year + ')/';
+    }
+
+    function _movieFirekey() {
+        return _movieFolder();
     }
 
 

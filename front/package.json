@@ -29,7 +29,8 @@
       "parse-torrent-name": "npm:parse-torrent-name@^0.5.4",
       "promise.prototype.finally": "npm:promise.prototype.finally@^1.0.1",
       "query-string": "npm:query-string@^3.0.0",
-      "rpg": "npm:rpg@^0.1.0"
+      "rpg": "npm:rpg@^0.1.0",
+      "store": "npm:store@^1.3.20"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
