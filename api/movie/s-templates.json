@@ -1,5 +1,5 @@
 {
-  "strmrDefaultTemplate": {
+  "strmrRequestTemplate": {
     "application/json": {
       "id": "$input.params('id')"
     }

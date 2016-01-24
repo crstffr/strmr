@@ -1,14 +1,21 @@
 var _ = require('lodash');
+
 var googleImages = require('google-images');
-var settings = require('../../lib/settings');
-var Movie = require('../../lib/models/movie');
+
+var Movie = require('strmr-common/models/movie');
+
+var keys = {
+    cse: '003929775359888328189:gq-c3wikrqc',
+    api: 'AIzaSyAZHE3kL-xnaMf74VugXqge35OcobNYEA4'
+};
+
 
 // Lambda Handler
 module.exports.handler = function (event, context) {
 
-    var searchEngine = googleImages(settings.posters.cse, settings.posters.api);
+    var searchEngine = googleImages(keys.cse, keys.api);
     var movie = new Movie(event.id);
-    var query = movie.queryString;
+    var query = movie.string;
 
     movie.getPosters().then(function(posters){
 

@@ -1,0 +1,10 @@
+{
+  "strmrRequestTemplate": {
+    "application/json": {
+      "movie": "$input.params('movie')",
+      "id": "$input.params('id')",
+      "u": "$input.params('u')",
+      "p": "$input.params('p')"
+    }
+  }
+}

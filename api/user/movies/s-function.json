@@ -1,6 +1,6 @@
 {
-  "name": "details",
-  "handler": "movie/details/details.handler",
+  "name": "movies",
+  "handler": "user/movies/movies.handler",
   "timeout": 6,
   "memorySize": 128,
   "custom": {
@@ -9,7 +9,7 @@
   },
   "endpoints": [
     {
-      "path": "movie/{id}/details",
+      "path": "user/{id}/movies",
       "method": "GET",
       "authorizationType": "none",
       "apiKeyRequired": false,
@@ -19,7 +19,7 @@
         "400": {
           "statusCode": "400"
         },
-        "default": "$${jsonResponse}"
+        "default": "$${htmlResponse}"
       }
     }
   ]

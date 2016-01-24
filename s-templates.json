@@ -1,9 +1,27 @@
 {
-  "strmrDefaultTemplate": {
+  "strmrRequestTemplate": {
     "application/json": {
       "body": "$input.json('$')",
-      "pathParams" : "$input.params().path",
-      "queryParams" : "$input.params().querystring"
+      "pathParams": "$input.params().path",
+      "queryParams": "$input.params().querystring"
+    }
+  },
+  "htmlResponse": {
+    "statusCode": "200",
+    "responseParameters": {},
+    "responseModels": {
+      "text/html": "Empty"
+    },
+    "responseTemplates": {
+      "text/html": "$input.path('$').html"
+    }
+  },
+  "jsonResponse": {
+    "statusCode": "200",
+    "responseParameters": {},
+    "responseModels": {},
+    "responseTemplates": {
+      "application/json": ""
     }
   }
 }

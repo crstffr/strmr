@@ -1,8 +1,8 @@
 
 var _ = require('lodash');
-var Promise = require('promise');
-var Movie = require('../../lib/models/movie');
-var omdb = require('../../lib/services/omdb');
+
+var Movie = require('strmr-common/models/movie');
+var omdb = require('strmr-common/connectors/omdb');
 
 module.exports.handler = function (event, context) {
 
@@ -15,11 +15,15 @@ module.exports.handler = function (event, context) {
 
     var movie = new Movie(id);
 
-    movie.getDetails().then(function(details){
+    movie.getDetails().then(function(details) {
+
+        console.log('we have it');
 
         context.succeed(details);
 
     }).catch(function(err) {
+
+        console.log('get from OMDB');
 
         omdb.getMovieDetails(movie.title, movie.year).then(function(details) {
 
