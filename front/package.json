@@ -4,7 +4,9 @@
   "description": "webapp for storing generating strms",
   "repository": "https://github.com/crstffr/strmr",
   "main": "index.html",
-  "dependencies": {},
+  "dependencies": {
+    "jspm-gist": "0.0.1"
+  },
   "devDependencies": {
     "jspm": "^0.16.23"
   },

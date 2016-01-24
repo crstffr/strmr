@@ -1,0 +1,6 @@
+{
+  "project": "strmr",
+  "projectBucket": "serverless.us-east-1.strmr.space",
+  "domain": "strmr.space",
+  "notificationEmail": "alarms@strmr.space"
+}

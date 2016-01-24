@@ -1,23 +1,75 @@
 {
-  "name": "serverless-strmr",
+  "name": "strmr",
   "version": "0.0.1",
-  "profile": "serverless-0",
+  "profile": "serverless-v0.1.5",
   "location": "https://github.com/...",
   "author": "",
-  "description": "",
-  "domain": "strmr.space",
-  "stages": {
-    "development": [
-      {
-        "region": "us-east-1",
-        "iamRoleArnLambda": "arn:aws:iam::703798892874:role/serverless-strmr-development-r-IamRoleLambda-1EE0DL3HEP26R",
-        "regionBucket": "serverless.useast1.strmr.space",
-        "restApiId": "p5bcrlcd8j"
-      }
-    ]
-  },
+  "description": "A Slick New Serverless Project",
   "custom": {},
-  "plugins": [{
-    "path": "serverless-serve"
-  }]
+  "templates": {},
+  "plugins": [],
+  "cloudFormation": {
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "The AWS CloudFormation template for this Serverless application's resources outside of Lambdas and Api Gateway",
+    "Resources": {
+      "IamRoleLambda": {
+        "Type": "AWS::IAM::Role",
+        "Properties": {
+          "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "lambda.amazonaws.com"
+                  ]
+                },
+                "Action": [
+                  "sts:AssumeRole"
+                ]
+              }
+            ]
+          },
+          "Path": "/"
+        }
+      },
+      "IamPolicyLambda": {
+        "Type": "AWS::IAM::Policy",
+        "Properties": {
+          "PolicyName": "${stage}-${project}-lambda",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "logs:CreateLogGroup",
+                  "logs:CreateLogStream",
+                  "logs:PutLogEvents"
+                ],
+                "Resource": "arn:aws:logs:${region}:*:*"
+              }
+            ]
+          },
+          "Roles": [
+            {
+              "Ref": "IamRoleLambda"
+            }
+          ]
+        }
+      }
+    },
+    "Outputs": {
+      "IamRoleArnLambda": {
+        "Description": "ARN of the lambda IAM role",
+        "Value": {
+          "Fn::GetAtt": [
+            "IamRoleLambda",
+            "Arn"
+          ]
+        }
+      }
+    }
+  }
 }

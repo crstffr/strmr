@@ -1,0 +1,13 @@
+{
+  "name": "movie",
+  "version": "0.0.1",
+  "profile": "aws-v0.1.5",
+  "location": "https://github.com/...",
+  "author": "",
+  "description": "Services for movies",
+  "custom": {},
+  "cloudFormation": {
+    "resources": {},
+    "lambdaIamPolicyDocumentStatements": []
+  }
+}

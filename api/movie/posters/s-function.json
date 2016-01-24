@@ -1,0 +1,33 @@
+{
+  "name": "posters",
+  "handler": "movie/posters/posters.handler",
+  "timeout": 6,
+  "memorySize": 128,
+  "custom": {
+    "excludePatterns": [],
+    "envVars": []
+  },
+  "endpoints": [
+    {
+      "path": "movie/{id}/posters",
+      "method": "GET",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": "$${strmrDefaultTemplate}",
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {},
+          "responseTemplates": {
+            "application/json": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "version": "0.0.1",
+  "description": "Serverless module dependencies",
+  "author": "me",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/"
+  },
+  "keywords": [],
+  "devDependencies": {},
+  "dependencies": {
+    "firebase": "^2.4.0",
+    "google-images": "^1.0.0",
+    "lodash": "^4.0.0",
+    "promise": "^7.1.1",
+    "request": "^2.67.0",
+    "serverless-helpers-js": "~0.0.3"
+  }
+}

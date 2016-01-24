@@ -1,0 +1,6 @@
+{
+  "region": "us-east-1",
+  "resourcesStackName": "strmr-development-r",
+  "iamRoleArnLambda": "arn:aws:iam::703798892874:role/strmr-development-r-IamRoleLambda-1QL7KXAHEQ7WA",
+  "apiGatewayApi": "strmr"
+}

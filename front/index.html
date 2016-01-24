@@ -12,6 +12,8 @@
     <script src="config.js"></script>
     <script>
 
+        System.trace = true;
+
         // This is what allows us to register this site as a
         // handler for magnet protocol links.  Works!
 
@@ -43,19 +45,41 @@
                     </button>
                 </div>
 
-                <div ng-if="!ctrl.auth.busy && ctrl.auth.loggedIn">
+                <div ng-if="!ctrl.auth.busy && ctrl.auth.loggedIn" class="clearfix">
 
-                    <a href=""
-                       tabindex="1"
-                       class="btn btn-primary"
-                       ng-click="ctrl.auth.logout()">Logout</a>
+                    <div class="pull-left">
 
-                    <span ng-if="ctrl.auth.validUser">
-                        <a target="_blank"
+                        <a href=""
                            tabindex="1"
-                           class="btn"
-                           href="{{ctrl.links.movies}}">Your Movies</a>
-                   </span>
+                           class="btn btn-primary-outline"
+                           ng-click="ctrl.auth.logout()">Logout</a>
+
+
+
+                    </div>
+
+                    <div class="pull-right text-sm-right">
+
+
+                        <button
+                                type="button"
+                                focus-on="save"
+                                class="btn btn-primary"
+                                ng-disabled="ctrl.state.busy"
+                                ng-click="ctrl.save()">
+                            <i class="fa fa-spinner fa-spin"></i> Add to Your Library
+                        </button>
+
+
+
+                        <span ng-if="ctrl.auth.validUser">
+                            <a target="_blank"
+                               tabindex="1"
+                               class="btn btn-primary-outline"
+                               href="{{ctrl.links.movies}}">Your Movies</a>
+                        </span>
+
+                   </div>
 
                     <div ng-if="!ctrl.auth.busy && !ctrl.auth.validUser">
                         <br/>
@@ -93,11 +117,12 @@
                         <div class="col-md-5">
 
                             <div class="poster">
-                                <div class="innards" ng-if="!ctrl.poster.url">
+
+                                <div class="innards" ng-if="ctrl.state.poster">
                                     <div class="cssload-loader"></div>
                                 </div>
 
-                                <img class="innards" ng-src="{{ctrl.poster.url}}">
+                                <img class="innards" ng-if="ctrl.poster.url" ng-src="{{ctrl.poster.url}}">
 
                             </div>
 
@@ -176,38 +201,13 @@
 
                     </div>
 
-
-                    <!--
-                    <div class="form-group col-m">
-                        <label>Path</label>
-                        <input
-                                disabled
-                                type="text"
-                                name="strm"
-                                ng-model="ctrl.magnet.firekey"
-                                class="form-control">
-                    </div>
-                    -->
-
                     <div class="row">
 
                         <div class="col-md-12">
 
                             <hr>
 
-                            <div class="form-group" ng-class="{busy:ctrl.state.busy}">
-                                <button
-                                        type="button"
-                                        focus-on="save"
-                                        class="btn btn-primary"
-                                        ng-disabled="ctrl.state.busy"
-                                        ng-click="ctrl.save()">
-                                    <i class="fa fa-spinner fa-spin"></i> Add to Your Library
-                                </button>
-                                <button type="button" ng-click="ctrl.reset()" class="btn btn-link">
-                                    Reset
-                                </button>
-                            </div>
+
                         </div>
 
                     </div>
