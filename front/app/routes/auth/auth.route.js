@@ -9,9 +9,10 @@ function Route($stateProvider) {
 
     $stateProvider
         .state({
-            url: '/auth/',
-            name: 'auth',
-            template: '<ui-view/>'
+            url: 'auth/',
+            name: 'app.auth',
+            template: '<div ui-view class="auth.route"/>',
+            redirect: '/auth/login/'
         });
 
 }

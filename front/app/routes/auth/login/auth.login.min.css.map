@@ -1,0 +1,1 @@
+{"version":3,"sources":["app/routes/auth/login/auth.login.scss"],"names":[],"mappings":"AAKA,WACE,UAAW","file":"app/routes/auth/login/auth.login.min.css","sourcesContent":["\n.btn {\n\n}\n\n.fa-github {\n  font-size: 8em;\n}\n"],"sourceRoot":"/source/"}

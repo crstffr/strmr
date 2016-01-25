@@ -1,4 +1,3 @@
-
 module.exports = require('angular')
     .module('route.index', [])
     .config(Route);
@@ -10,8 +9,10 @@ function Route($stateProvider) {
     $stateProvider
         .state({
             url: '/',
-            name: 'index',
-            redirectTo: 'auth.login'
+            name: 'app',
+            template: require('./index.layout.html!'),
+            controller: require('./index.ctrl'),
+            controllerAs: 'ctrl'
         });
 
 }

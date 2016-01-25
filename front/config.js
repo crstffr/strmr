@@ -12,103 +12,55 @@ System.config({
     "npm:*": "jspm/npm/*"
   },
   bundles: {
-    "bundle/angular.min.js": [
-      "github:angular/bower-angular@1.4.8",
-      "github:angular/bower-angular@1.4.8/angular"
-    ],
-    "bundle/style.min.js": [
-      "style/style.js",
-      "github:necolas/normalize.css@3.0.3",
-      "github:twbs/bootstrap@4.0.0-alpha/css/bootstrap.min.css!github:systemjs/plugin-css@0.1.19",
-      "style/strmr.css!github:systemjs/plugin-css@0.1.19",
-      "github:necolas/normalize.css@3.0.3/normalize.css!github:systemjs/plugin-css@0.1.19"
-    ],
-    "bundle/strmr.min.js": [
-      "app/strmr.js",
-      "app/settings.js",
-      "app/common/current.js",
-      "app/common/search.js",
-      "app/data/strm.js",
-      "app/common/magnet.js",
-      "app/common/forms/focus.js",
-      "app/common/auth.js",
-      "npm:lodash@3.10.1",
-      "app/utils/cleankey.js",
-      "app/utils/zeropad.js",
-      "app/data/user.js",
-      "app/common/request.js",
-      "npm:parse-torrent-name@0.5.4",
-      "npm:query-string@3.0.0",
-      "npm:rpg@0.1.0",
-      "npm:store@1.3.20",
-      "app/firebase/ref.js",
-      "npm:promise.prototype.finally@1.0.1",
-      "npm:lodash@3.10.1/index",
-      "npm:browser-request@0.3.3",
-      "npm:parse-torrent-name@0.5.4/index",
-      "app/data/users.js",
-      "npm:query-string@3.0.0/index",
-      "npm:store@1.3.20/store",
-      "npm:rpg@0.1.0/lib/rpg",
-      "github:firebase/firebase-bower@2.3.2",
-      "github:jspm/nodelibs-process@0.1.2",
-      "npm:promise.prototype.finally@1.0.1/finally",
-      "npm:strict-uri-encode@1.1.0",
-      "npm:parse-torrent-name@0.5.4/parts/common",
-      "npm:parse-torrent-name@0.5.4/parts/title",
-      "npm:parse-torrent-name@0.5.4/parts/excess",
-      "npm:parse-torrent-name@0.5.4/core",
-      "npm:browser-request@0.3.3/index",
-      "github:firebase/firebase-bower@2.3.2/firebase",
-      "github:jspm/nodelibs-process@0.1.2/index",
-      "npm:strict-uri-encode@1.1.0/index",
-      "github:jspm/nodelibs-events@0.1.1",
-      "npm:process@0.11.2",
-      "github:jspm/nodelibs-events@0.1.1/index",
-      "npm:process@0.11.2/browser",
-      "npm:events@1.0.2",
-      "npm:events@1.0.2/events"
-    ],
-    "bundle/request.min.js": [
-      "npm:browser-request@0.3.3",
-      "npm:browser-request@0.3.3/index",
+    "bundle/lodash.min.js": [
+      "npm:lodash@4.0.0",
+      "npm:lodash@4.0.0/index",
+      "npm:lodash@4.0.0/lodash",
       "github:jspm/nodelibs-process@0.1.2",
       "github:jspm/nodelibs-process@0.1.2/index",
       "npm:process@0.11.2",
       "npm:process@0.11.2/browser"
     ],
-    "bundle/superagent.min.js": [
-      "npm:superagent@1.7.1",
-      "npm:superagent@1.7.1/lib/client",
-      "npm:reduce-component@1.0.1",
-      "npm:component-emitter@1.2.0",
-      "npm:component-emitter@1.2.0/index",
-      "npm:reduce-component@1.0.1/index"
+    "bundle/angular.min.js": [
+      "github:angular/bower-angular@1.4.9",
+      "github:angular/bower-angular@1.4.9/angular"
     ]
   },
 
   map: {
-    "angular": "github:angular/bower-angular@1.4.8",
+    "angular": "github:angular/bower-angular@1.4.9",
+    "angular-ui-router": "github:angular-ui/ui-router@0.2.16",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "bootstrap": "github:twbs/bootstrap@4.0.0-alpha",
-    "browser-request": "npm:browser-request@0.3.3",
     "clean-css": "npm:clean-css@3.4.6",
     "core-js": "npm:core-js@1.2.5",
-    "css": "github:systemjs/plugin-css@0.1.19",
-    "firebase": "github:firebase/firebase-bower@2.3.2",
+    "css": "github:systemjs/plugin-css@0.1.20",
+    "font-awesome": "npm:font-awesome@4.5.0",
     "html": "github:systemjs/plugin-text@0.0.4",
-    "lodash": "npm:lodash@3.10.1",
+    "lodash": "npm:lodash@4.0.0",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
+    "ocLazyLoad": "github:ocombe/ocLazyLoad@1.0.9",
     "parse-torrent-name": "npm:parse-torrent-name@0.5.4",
+    "promise": "npm:promise@7.1.1",
     "promise.prototype.finally": "npm:promise.prototype.finally@1.0.1",
     "query-string": "npm:query-string@3.0.0",
     "rpg": "npm:rpg@0.1.0",
     "store": "npm:store@1.3.20",
-    "string-format": "npm:string-format@0.5.0",
-    "superagent": "npm:superagent@1.7.1",
-    "superagent-promise": "npm:superagent-promise@1.1.0",
+    "strmr-common": "github:crstffr/strmr-common@master",
     "text": "github:systemjs/plugin-text@0.0.4",
+    "ui-router-extras": "github:christopherthielen/ui-router-extras@0.1.0",
+    "github:angular-ui/ui-router@0.2.16": {
+      "angular": "github:angular/bower-angular@1.4.9"
+    },
+    "github:crstffr/strmr-common@master": {
+      "firebase": "npm:firebase@2.4.0",
+      "lodash": "npm:lodash@4.0.0",
+      "promise": "npm:promise@7.1.1",
+      "string-format": "npm:string-format@0.5.0",
+      "superagent": "npm:superagent@1.7.1",
+      "superagent-promise": "npm:superagent-promise@1.1.0"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -120,6 +72,9 @@ System.config({
     },
     "github:jspm/nodelibs-crypto@0.1.0": {
       "crypto-browserify": "npm:crypto-browserify@3.11.0"
+    },
+    "github:jspm/nodelibs-domain@0.1.0": {
+      "domain-browser": "npm:domain-browser@1.1.7"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -182,7 +137,7 @@ System.config({
       "browserify-zlib": "npm:browserify-zlib@0.1.4"
     },
     "github:necolas/normalize.css@3.0.3": {
-      "css": "github:systemjs/plugin-css@0.1.19"
+      "css": "github:systemjs/plugin-css@0.1.20"
     },
     "github:twbs/bootstrap@4.0.0-alpha": {
       "jquery": "github:components/jquery@2.1.4"
@@ -191,6 +146,10 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:asap@2.0.3": {
+      "domain": "github:jspm/nodelibs-domain@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:asn1.js@4.3.0": {
@@ -209,9 +168,6 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:babel-runtime@5.8.29": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:browser-request@0.3.3": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:browserify-aes@1.0.6": {
@@ -382,6 +338,9 @@ System.config({
       "randombytes": "npm:randombytes@2.0.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
+    "npm:domain-browser@1.1.7": {
+      "events": "github:jspm/nodelibs-events@0.1.1"
+    },
     "npm:elliptic@6.2.0": {
       "bn.js": "npm:bn.js@4.6.6",
       "brorand": "npm:brorand@1.0.5",
@@ -393,6 +352,29 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0"
+    },
+    "npm:faye-websocket@0.10.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "http": "github:jspm/nodelibs-http@1.7.1",
+      "https": "github:jspm/nodelibs-https@0.1.0",
+      "net": "github:jspm/nodelibs-net@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "tls": "github:jspm/nodelibs-tls@0.1.0",
+      "url": "github:jspm/nodelibs-url@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0",
+      "websocket-driver": "npm:websocket-driver@0.6.4"
+    },
+    "npm:firebase@2.4.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "faye-websocket": "npm:faye-websocket@0.10.0",
+      "http": "github:jspm/nodelibs-http@1.7.1",
+      "https": "github:jspm/nodelibs-https@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:font-awesome@4.5.0": {
+      "css": "github:systemjs/plugin-css@0.1.20"
     },
     "npm:form-data@0.2.0": {
       "async": "npm:async@0.9.2",
@@ -431,7 +413,7 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:lodash@3.10.1": {
+    "npm:lodash@4.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:miller-rabin@4.0.0": {
@@ -488,6 +470,10 @@ System.config({
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
+    "npm:promise@7.1.1": {
+      "asap": "npm:asap@2.0.3",
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
+    },
     "npm:public-encrypt@4.0.0": {
       "bn.js": "npm:bn.js@4.6.6",
       "browserify-rsa": "npm:browserify-rsa@4.0.0",
@@ -516,16 +502,6 @@ System.config({
       "isarray": "npm:isarray@0.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
-      "string_decoder": "npm:string_decoder@0.10.31"
-    },
-    "npm:readable-stream@1.1.13": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "core-util-is": "npm:core-util-is@1.0.2",
-      "events": "github:jspm/nodelibs-events@0.1.1",
-      "inherits": "npm:inherits@2.0.1",
-      "isarray": "npm:isarray@0.0.1",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31"
     },
     "npm:readable-stream@2.0.5": {
@@ -560,7 +536,7 @@ System.config({
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
-      "readable-stream": "npm:readable-stream@1.1.13"
+      "readable-stream": "npm:readable-stream@1.0.27-1"
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
@@ -611,6 +587,20 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
+    },
+    "npm:websocket-driver@0.6.4": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "crypto": "github:jspm/nodelibs-crypto@0.1.0",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "net": "github:jspm/nodelibs-net@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "url": "github:jspm/nodelibs-url@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0",
+      "websocket-extensions": "npm:websocket-extensions@0.1.1"
+    },
+    "npm:websocket-extensions@0.1.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     }
   }
 });

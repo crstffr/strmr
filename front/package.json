@@ -5,10 +5,24 @@
   "repository": "https://github.com/crstffr/strmr",
   "main": "index.html",
   "dependencies": {
+    "jspm": "^0.16.23",
     "jspm-gist": "0.0.1"
   },
   "devDependencies": {
-    "jspm": "^0.16.23"
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.0",
+    "gulp-cached": "^1.1.0",
+    "gulp-help": "^1.6.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-print": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "run-sequence": "^1.1.5",
+    "sass-jspm-importer": "0.0.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,23 +36,24 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.7",
+      "angular-ui/ui-router": "github:angular-ui/ui-router@^0.2.16",
       "bootstrap": "github:twbs/bootstrap@4.0.0-alpha",
-      "browser-request": "npm:browser-request@^0.3.3",
       "clean-css": "npm:clean-css@^3.4.6",
       "css": "github:systemjs/plugin-css@^0.1.18",
-      "firebase": "github:firebase/firebase-bower@^2.3.2",
+      "font-awesome": "npm:font-awesome@^4.5.0",
       "html": "github:systemjs/plugin-text@^0.0.4",
-      "lodash": "npm:lodash@^3.10.1",
+      "lodash": "npm:lodash@^4.0.0",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
+      "ocLazyLoad": "github:ocombe/ocLazyLoad@^1.0.9",
       "parse-torrent-name": "npm:parse-torrent-name@^0.5.4",
+      "promise": "npm:promise@^7.1.1",
       "promise.prototype.finally": "npm:promise.prototype.finally@^1.0.1",
       "query-string": "npm:query-string@^3.0.0",
       "rpg": "npm:rpg@^0.1.0",
       "store": "npm:store@^1.3.20",
-      "string-format": "npm:string-format@^0.5.0",
-      "superagent": "npm:superagent@^1.7.1",
-      "superagent-promise": "npm:superagent-promise@^1.1.0",
-      "text": "github:systemjs/plugin-text@^0.0.4"
+      "strmr-common": "github:crstffr/strmr-common@master",
+      "text": "github:systemjs/plugin-text@^0.0.4",
+      "ui-router-extras": "github:christopherthielen/ui-router-extras@^0.1.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

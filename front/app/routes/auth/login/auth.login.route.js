@@ -1,4 +1,6 @@
 
+require('./auth.login.min.css!');
+
 module.exports = require('angular')
     .module('route.auth.login', [])
     .config(Route);
@@ -10,8 +12,10 @@ function Route($stateProvider) {
     $stateProvider
         .state({
             url: 'login/',
-            name: 'auth.login',
-            template: require('./auth.login.html!')
+            name: 'app.auth.login',
+            template: require('./auth.login.html!'),
+            controller: require('./auth.login.ctrl'),
+            controllerAs: 'ctrl'
         });
 
 }

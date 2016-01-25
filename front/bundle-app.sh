@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-jspm bundle ./app/strmr.js - angular ./bundle/strmr.min.js -mi;
+jspm bundle ./app/app.js - angular - lodash ./bundle/strmr.min.js -mi;

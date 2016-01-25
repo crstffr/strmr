@@ -1,0 +1,59 @@
+
+.container {
+  margin-top: 2em;
+}
+
+.auth-buttons {
+  margin-bottom: 16px;
+}
+
+button i.fa {
+  display: none;
+  margin-right: 5px;
+}
+
+.busy button i.fa {
+  display: inline;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.poster {
+  position: relative;
+  margin-bottom: 15px;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 150%;
+  }
+
+  > .innards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: #f9f9f9;
+    border: 1px solid #ececec;
+    border-radius: 6px;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+}
+
+.navbar + .container {
+  margin-top: 6em;
+}

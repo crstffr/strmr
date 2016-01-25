@@ -6,7 +6,7 @@ var current = require('app/common/current');
 var User = require('app/data/user');
 var store = require('store');
 
-require('promise.prototype.finally');
+
 
 module.exports = new Auth();
 
