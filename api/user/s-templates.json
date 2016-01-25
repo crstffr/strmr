@@ -2,7 +2,7 @@
   "strmrRequestTemplate": {
     "application/json": {
       "movie": "$input.params('movie')",
-      "id": "$input.params('id')",
+      "uid": "$input.params('uid')",
       "u": "$input.params('u')",
       "p": "$input.params('p')"
     }

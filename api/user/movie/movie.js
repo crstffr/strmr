@@ -1,66 +1,56 @@
 var _ = require('lodash');
-
 var auth = require('strmr-common/auth');
 var htmlout = require('strmr-common/utils/htmlout');
-var userMovieConn = require('strmr-common/connectors/api.user.movie');
+var settings = require('strmr-common/settings');
 
 module.exports.handler = function (event, context) {
 
-    var id = event.id;
+    var uid = event.uid;
     var email = event.u;
     var password = event.p;
+    var movieid = event.movie;
 
-    if (!id) {
-        context.succeed({html: htmlout({header: 'No id specified'})});
+    if (!uid) {
+        context.succeed(htmlout({header: 'No user id specified'}));
         return;
     }
 
     if (!email) {
-        context.succeed({html: htmlout({header: 'No email specified'})});
+        context.succeed(htmlout({header: 'No email specified'}));
         return;
     }
 
     if (!password) {
-        context.succeed({html: htmlout({header: 'No password specified'})});
+        context.succeed(htmlout({header: 'No password specified'}));
         return;
     }
 
-    auth.withPassword(id, email, password).then(function (user) {
+    if (!movieid) {
+        context.succeed(htmlout({header: 'No movie specified'}));
+        return;
+    }
 
-        user.getMovies().then(function(movies){
+    auth.withPassword(uid, email, password).then(function (user) {
 
-            context.succeed({
-                html: htmlout({
-                    header: 'Index of /movies',
-                    body: _buildLinks(movies, user)
-                })
-            });
+        user.getMovie(movieid).then(function(movie){
+
+            var plugin = settings.kodi.plugin;
+            var output = plugin + encodeURIComponent(movie.magnet);
+
+            context.succeed(output);
+
+        }).catch(function(err){
+
+            context.succeed(htmlout({header: err}));
 
         });
 
     }).catch(function (err) {
 
-        context.succeed({html: htmlout({header: err})});
+        context.succeed(htmlout({header: err}));
 
     });
 
-
-    function _buildLinks(movies, user) {
-
-        var out = '';
-        out += '<hr><pre>';
-
-        _.forEach(movies, function(movie) {
-
-            var url = userMovieConn.url(user.id, movie.id, user.email, user.password);
-            var filename = movie.string + '.strm';
-            out += '<a href="' + url + '">' + filename + '</a>\n';
-
-        });
-
-        out += '</pre><hr>';
-        return out;
-    }
 
 
 };

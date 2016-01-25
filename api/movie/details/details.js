@@ -17,13 +17,9 @@ module.exports.handler = function (event, context) {
 
     movie.getDetails().then(function(details) {
 
-        console.log('we have it');
-
         context.succeed(details);
 
     }).catch(function(err) {
-
-        console.log('get from OMDB');
 
         omdb.getMovieDetails(movie.title, movie.year).then(function(details) {
 

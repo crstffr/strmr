@@ -1,6 +1,6 @@
 {
-  "name": "movies",
-  "handler": "user/movies/movies.handler",
+  "name": "movie",
+  "handler": "user/movie/movie.handler",
   "timeout": 6,
   "memorySize": 128,
   "custom": {
@@ -9,7 +9,7 @@
   },
   "endpoints": [
     {
-      "path": "user/{id}/movies",
+      "path": "user/{uid}/movie/{movie}",
       "method": "GET",
       "authorizationType": "none",
       "apiKeyRequired": false,
