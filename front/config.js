@@ -13,9 +13,8 @@ System.config({
   },
   bundles: {
     "bundle/lodash.min.js": [
-      "npm:lodash@4.0.0",
-      "npm:lodash@4.0.0/index",
-      "npm:lodash@4.0.0/lodash",
+      "npm:lodash@4.0.1",
+      "npm:lodash@4.0.1/lodash",
       "github:jspm/nodelibs-process@0.1.2",
       "github:jspm/nodelibs-process@0.1.2/index",
       "npm:process@0.11.2",
@@ -24,6 +23,117 @@ System.config({
     "bundle/angular.min.js": [
       "github:angular/bower-angular@1.4.9",
       "github:angular/bower-angular@1.4.9/angular"
+    ],
+    "bundle/style.min.js": [
+      "style/style.js",
+      "github:necolas/normalize.css@3.0.3",
+      "github:twbs/bootstrap@4.0.0-alpha/css/bootstrap.min.css!github:systemjs/plugin-css@0.1.20",
+      "style/css/fontawesome.min.css!github:systemjs/plugin-css@0.1.20",
+      "style/css/app.min.css!github:systemjs/plugin-css@0.1.20",
+      "github:necolas/normalize.css@3.0.3/normalize.css!github:systemjs/plugin-css@0.1.20"
+    ],
+    "bundle/common.min.js": [
+      "github:crstffr/strmr-common@master",
+      "github:crstffr/strmr-common@master/index",
+      "github:crstffr/strmr-common@master/current",
+      "github:crstffr/strmr-common@master/auth",
+      "github:crstffr/strmr-common@master/request",
+      "github:crstffr/strmr-common@master/settings",
+      "npm:rpg@0.1.0",
+      "npm:promise@7.1.1",
+      "github:crstffr/strmr-common@master/models/user",
+      "github:crstffr/strmr-common@master/refs/root",
+      "github:crstffr/strmr-common@master/refs/auth",
+      "npm:superagent-promise@1.1.0",
+      "npm:superagent@1.7.2",
+      "npm:rpg@0.1.0/lib/rpg",
+      "npm:promise@7.1.1/index",
+      "github:crstffr/strmr-common@master/refs/users",
+      "github:crstffr/strmr-common@master/models/movie",
+      "npm:firebase@2.4.0",
+      "npm:superagent-promise@1.1.0/index",
+      "npm:superagent@1.7.2/lib/client",
+      "github:crstffr/strmr-common@master/refs/movies",
+      "npm:promise@7.1.1/lib/index",
+      "npm:firebase@2.4.0/lib/firebase-web",
+      "npm:component-emitter@1.2.0",
+      "npm:reduce-component@1.0.1",
+      "npm:promise@7.1.1/lib/done",
+      "npm:promise@7.1.1/lib/finally",
+      "npm:promise@7.1.1/lib/synchronous",
+      "npm:promise@7.1.1/lib/es6-extensions",
+      "npm:promise@7.1.1/lib/node-extensions",
+      "npm:promise@7.1.1/lib/core",
+      "github:jspm/nodelibs-buffer@0.1.0",
+      "npm:component-emitter@1.2.0/index",
+      "npm:reduce-component@1.0.1/index",
+      "npm:asap@2.0.3",
+      "npm:asap@2.0.3/raw",
+      "github:jspm/nodelibs-buffer@0.1.0/index",
+      "github:jspm/nodelibs-domain@0.1.0",
+      "npm:asap@2.0.3/asap",
+      "npm:buffer@3.6.0",
+      "npm:asap@2.0.3/browser-raw",
+      "github:jspm/nodelibs-domain@0.1.0/index",
+      "npm:buffer@3.6.0/index",
+      "npm:domain-browser@1.1.7",
+      "npm:base64-js@0.0.8",
+      "npm:ieee754@1.1.6",
+      "npm:isarray@1.0.0",
+      "npm:domain-browser@1.1.7/index",
+      "npm:base64-js@0.0.8/lib/b64",
+      "npm:ieee754@1.1.6/index",
+      "npm:isarray@1.0.0/index",
+      "github:jspm/nodelibs-events@0.1.1",
+      "github:jspm/nodelibs-events@0.1.1/index",
+      "npm:events@1.0.2",
+      "npm:events@1.0.2/events"
+    ],
+    "bundle/strmr.min.js": [
+      "app/app.js",
+      "npm:promise.prototype.finally@1.0.1",
+      "github:ocombe/ocLazyLoad@1.0.9",
+      "app/controller.js",
+      "app/setup/router.js",
+      "github:angular-ui/ui-router@0.2.16",
+      "github:christopherthielen/ui-router-extras@0.1.0",
+      "app/setup/setupNg.js",
+      "app/modules/location.js",
+      "app/setup/optionalSlash.js",
+      "app/common/forms/focus.js",
+      "npm:promise.prototype.finally@1.0.1/finally",
+      "github:ocombe/ocLazyLoad@1.0.9/dist/ocLazyLoad",
+      "app/futureStates.js",
+      "ng.js",
+      "github:angular-ui/ui-router@0.2.16/angular-ui-router",
+      "github:christopherthielen/ui-router-extras@0.1.0/release/ct-ui-router-extras"
+    ],
+    "bundle/route.index.min.js": [
+      "app/routes/index.route.js",
+      "app/routes/index.ctrl.js",
+      "app/services/login.js",
+      "app/routes/index.layout.html!github:systemjs/plugin-text@0.0.4",
+      "ng.js"
+    ],
+    "bundle/route.auth.min.js": [
+      "app/routes/auth/auth.route.js"
+    ],
+    "bundle/route.auth.login.min.js": [
+      "app/routes/auth/login/auth.login.route.js",
+      "app/routes/auth/login/auth.login.ctrl.js",
+      "app/routes/auth/login/auth.login.min.css!github:systemjs/plugin-css@0.1.20",
+      "ng.js",
+      "app/services/login.js",
+      "app/routes/auth/login/auth.login.html!github:systemjs/plugin-text@0.0.4"
+    ],
+    "bundle/route.library.min.js": [
+      "app/routes/library/library.route.js",
+      "app/routes/library/home/library.home.ctrl.js",
+      "ng.js",
+      "app/routes/library/home/library.home.html!github:systemjs/plugin-text@0.0.4",
+      "github:crstffr/strmr-common@master/connectors/api.user.movies",
+      "npm:string-format@0.5.0",
+      "npm:string-format@0.5.0/lib/string-format"
     ]
   },
 
@@ -38,7 +148,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "html": "github:systemjs/plugin-text@0.0.4",
-    "lodash": "npm:lodash@4.0.0",
+    "lodash": "npm:lodash@4.0.1",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "ocLazyLoad": "github:ocombe/ocLazyLoad@1.0.9",
     "parse-torrent-name": "npm:parse-torrent-name@0.5.4",
@@ -55,10 +165,13 @@ System.config({
     },
     "github:crstffr/strmr-common@master": {
       "firebase": "npm:firebase@2.4.0",
-      "lodash": "npm:lodash@4.0.0",
+      "lodash": "npm:lodash@4.0.1",
+      "parse-torrent-name": "npm:parse-torrent-name@0.5.4",
       "promise": "npm:promise@7.1.1",
+      "query-string": "npm:query-string@3.0.0",
+      "rpg": "npm:rpg@0.1.0",
       "string-format": "npm:string-format@0.5.0",
-      "superagent": "npm:superagent@1.7.1",
+      "superagent": "npm:superagent@1.7.2",
       "superagent-promise": "npm:superagent-promise@1.1.0"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -154,7 +267,7 @@ System.config({
     },
     "npm:asn1.js@4.3.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "bn.js": "npm:bn.js@4.6.6",
+      "bn.js": "npm:bn.js@4.8.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
@@ -196,20 +309,20 @@ System.config({
       "inherits": "npm:inherits@2.0.1"
     },
     "npm:browserify-rsa@4.0.0": {
-      "bn.js": "npm:bn.js@4.6.6",
+      "bn.js": "npm:bn.js@4.8.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "constants": "github:jspm/nodelibs-constants@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "randombytes": "npm:randombytes@2.0.2"
     },
     "npm:browserify-sign@4.0.0": {
-      "bn.js": "npm:bn.js@4.6.6",
+      "bn.js": "npm:bn.js@4.8.1",
       "browserify-rsa": "npm:browserify-rsa@4.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
       "create-hmac": "npm:create-hmac@1.1.4",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "elliptic": "npm:elliptic@6.2.0",
+      "elliptic": "npm:elliptic@6.2.2",
       "inherits": "npm:inherits@2.0.1",
       "parse-asn1": "npm:parse-asn1@5.0.0",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
@@ -280,10 +393,10 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:create-ecdh@4.0.0": {
-      "bn.js": "npm:bn.js@4.6.6",
+      "bn.js": "npm:bn.js@4.8.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "elliptic": "npm:elliptic@6.2.0"
+      "elliptic": "npm:elliptic@6.2.2"
     },
     "npm:create-hash@1.1.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -307,7 +420,7 @@ System.config({
       "create-ecdh": "npm:create-ecdh@4.0.0",
       "create-hash": "npm:create-hash@1.1.2",
       "create-hmac": "npm:create-hmac@1.1.4",
-      "diffie-hellman": "npm:diffie-hellman@5.0.1",
+      "diffie-hellman": "npm:diffie-hellman@5.0.2",
       "inherits": "npm:inherits@2.0.1",
       "pbkdf2": "npm:pbkdf2@3.0.4",
       "public-encrypt": "npm:public-encrypt@4.0.0",
@@ -330,8 +443,8 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
     },
-    "npm:diffie-hellman@5.0.1": {
-      "bn.js": "npm:bn.js@4.6.6",
+    "npm:diffie-hellman@5.0.2": {
+      "bn.js": "npm:bn.js@4.8.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "miller-rabin": "npm:miller-rabin@4.0.0",
@@ -341,8 +454,8 @@ System.config({
     "npm:domain-browser@1.1.7": {
       "events": "github:jspm/nodelibs-events@0.1.1"
     },
-    "npm:elliptic@6.2.0": {
-      "bn.js": "npm:bn.js@4.6.6",
+    "npm:elliptic@6.2.2": {
+      "bn.js": "npm:bn.js@4.8.1",
       "brorand": "npm:brorand@1.0.5",
       "hash.js": "npm:hash.js@1.0.3",
       "inherits": "npm:inherits@2.0.1",
@@ -413,11 +526,11 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:lodash@4.0.0": {
+    "npm:lodash@4.0.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:miller-rabin@4.0.0": {
-      "bn.js": "npm:bn.js@4.6.6",
+      "bn.js": "npm:bn.js@4.8.1",
       "brorand": "npm:brorand@1.0.5"
     },
     "npm:mime-db@1.12.0": {
@@ -475,7 +588,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:public-encrypt@4.0.0": {
-      "bn.js": "npm:bn.js@4.6.6",
+      "bn.js": "npm:bn.js@4.8.1",
       "browserify-rsa": "npm:browserify-rsa@4.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
@@ -545,12 +658,12 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "http": "github:jspm/nodelibs-http@1.7.1"
     },
-    "npm:superagent@1.7.1": {
+    "npm:superagent@1.7.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "component-emitter": "npm:component-emitter@1.2.0",
       "cookiejar": "npm:cookiejar@2.0.6",
       "debug": "npm:debug@2.2.0",
-      "extend": "npm:extend@1.2.1",
+      "extend": "npm:extend@3.0.0",
       "form-data": "npm:form-data@0.2.0",
       "formidable": "npm:formidable@1.0.17",
       "fs": "github:jspm/nodelibs-fs@0.1.2",

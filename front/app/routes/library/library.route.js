@@ -11,7 +11,7 @@ function Route($stateProvider) {
         .state({
             url: 'library/',
             name: 'app.library',
-            template: '<div ui-view class="library.route"/>',
+            template: '<div ui-view ng-if="user" class="library.route"/>',
             redirect: '/library/home/',
             loggedIn: true
         })
@@ -19,6 +19,8 @@ function Route($stateProvider) {
             url: 'home/',
             name: 'app.library.home',
             template: require('./home/library.home.html!'),
+            controller: require('./home/library.home.ctrl'),
+            controllerAs: 'ctrl',
             loggedIn: true
         });
 

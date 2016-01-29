@@ -28,8 +28,8 @@ function AppController($timeout,
         }
 
         if (toState.loggedIn) {
-            ng.ready().then(function(){
-                if (!$rootScope.user) {
+            ng.ready().then(function(user){
+                if (!user) {
                     event.preventDefault();
                     location.go('/auth/login/');
                 }

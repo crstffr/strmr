@@ -9,10 +9,12 @@ function Controller() {
 
     this.login = login;
 
-    auth.onChange(function(user) {
-        if (user) {
-            ng.location.go('/library/home/');
-        }
+    auth.onAuth(function(user) {
+        ng.location.go('/library/home/');
     });
+
+    auth.onUnAuth(function(){
+        ng.location.go('/auth/login/');
+    })
 
 }

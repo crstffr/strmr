@@ -12,7 +12,8 @@ function Route($stateProvider) {
             name: 'app',
             template: require('./index.layout.html!'),
             controller: require('./index.ctrl'),
-            controllerAs: 'ctrl'
+            controllerAs: 'ctrl',
+            redirect: '/library/home/'
         });
 
 }

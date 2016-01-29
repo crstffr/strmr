@@ -54,12 +54,10 @@ function AppController($http, $rootScope, $location, focusService) {
     _reset();
     _prefill();
 
-    auth.onChange(function(user){
+    auth.onAuth(function(user){
+        _this.user = user;
+        _userLoggedin();
         $rootScope.$applyAsync();
-        if (user && _this.auth.validUser) {
-            _this.user = user;
-            _userLoggedin();
-        }
     });
 
     function _prefill() {

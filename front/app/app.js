@@ -12,7 +12,6 @@ var AppController = require('./controller');
 var setupNg = require('./setup/setupNg');
 var setupRouter = require('./setup/router');
 var setupOptionalSlash = require('./setup/optionalSlash');
-var locationModule = require('./modules/location');
 
 var appName = 'strmr';
 
@@ -20,7 +19,8 @@ var appDeps = [
     'ui.router',
     'oc.lazyLoad',
     'ct.ui.router.extras',
-    locationModule.name
+    require('app/modules/location').name,
+    require('app/common/forms/focus').name
 ];
 
 module.exports = angular.module(appName, appDeps)
