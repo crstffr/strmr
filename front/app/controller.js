@@ -28,6 +28,10 @@ function AppController($timeout,
             });
         }
 
+        if (toState.title) {
+            current.title = toState.title;
+        }
+
         if (toState.loggedIn) {
             ng.ready().then(function(user){
                 if (!user) {
@@ -50,6 +54,7 @@ function AppController($timeout,
 
     ng.ready().then(function(user){
         current.user = user;
+        console.log(user);
     });
 
     // Tie the LazyRouter events to our loader component so that when

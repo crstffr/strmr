@@ -2,25 +2,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
-            <div class="row" ng-show="ctrl.state.part2">
-                <div>
-                    <div class="col-md-12">
-                        <button
-                                type="button"
-                                focus-on="save"
-                                class="btn btn-primary"
-                                ng-disabled="ctrl.state.busy"
-                                ng-click="ctrl.save()">
-                            <i class="fa fa-spinner fa-spin"></i> Add to Your Library
-                        </button>
-
-                        <span class="text-success pad-left-1" ng-bind="ctrl.msgs.success"></span>
-                   </div>
-                </div>
-            </div>
-
             <div ng-cloak ng-show="ctrl.state.part1">
-
                 <div class="form-group">
                     <label>Magnet Link</label>
                     <input
@@ -33,22 +15,43 @@
                             ng-model-options="{ debounce: 250 }"
                             class="form-control">
                 </div>
-
                 <div>
                     <p class="text-danger" ng-bind="ctrl.msgs.error"></p>
                 </div>
             </div>
 
-            <div ng-cloak ng-show="ctrl.state.part2">
-
-                <hr>
-
-                <movie magnet="ctrl.magnet"></movie>
-
-                <hr>
-
+            <div class="row" ng-if="ctrl.state.addButton">
+                <div class="col-md-12">
+                    <button
+                            type="button"
+                            focus-on="save"
+                            class="btn btn-primary"
+                            ng-click="ctrl.save()">
+                        <i class="fa fa-spinner fa-spin"></i> Add to Your Library
+                    </button>
+                </div>
             </div>
 
+            <div class="row"
+                 ng-if="ctrl.alerts.success || ctrl.alerts.exactExists || ctrl.alerts.diffExists">
+                <div class="col-md-12" ng-class="{'m-t': ctrl.state.addButton}">
+                    <div class="alert alert-success m-b-0" ng-if="ctrl.alerts.success">
+                        Movie has been added to your library.
+                    </div>
+                    <div class="alert alert-info m-b-0" ng-if="ctrl.alerts.exactExists">
+                        This movie is already in your library.
+                    </div>
+                    <div class="alert alert-warning m-b-0" ng-if="ctrl.alerts.diffExists">
+                        A different copy of this movie is already in your library.
+                    </div>
+                </div>
+            </div>
+
+            <div ng-cloak ng-show="ctrl.state.part2">
+                <hr>
+                <movie magnet="ctrl.magnet"></movie>
+                <hr>
+            </div>
 
         </div>
     </div>

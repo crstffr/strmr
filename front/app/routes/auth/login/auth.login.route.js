@@ -12,6 +12,7 @@ function Route($stateProvider) {
     $stateProvider
         .state({
             url: 'login/',
+            title: 'Login',
             name: 'app.auth.login',
             template: require('./auth.login.html!'),
             controller: require('./auth.login.ctrl'),

@@ -7,6 +7,7 @@ function MovieController() {
 
     var _this = this;
 
+    var movie;
     var Movie = require('strmr-common/models/movie');
     var details = require('strmr-common/connectors/api.movie.details');
     var posters = require('strmr-common/connectors/api.movie.posters');
@@ -17,11 +18,10 @@ function MovieController() {
 
     if (!_.isEmpty(this.magnet)) {
         console.log(this.magnet);
-        this.title = this.magnet.properties.title;
-        this.year = this.magnet.properties.year;
+        movie = this.magnet.movie;
+    } else {
+        movie = new Movie(this.title, this.year);
     }
-
-    var movie = new Movie(this.title, this.year);
 
     this.details = movie.details;
     this.posters = movie.posters;
@@ -75,9 +75,9 @@ function MovieController() {
     });
 
     _getPosters().then(function(posters){
-        _this.posterIndex = 0;
         _this.poster = movie.poster || posters[0];
         _this.posters = movie.posters || posters;
+        _this.posterIndex = _.findIndex(_this.posters, _this.poster);
         _this.loadingPosters = false;
         ng.digest();
     });
