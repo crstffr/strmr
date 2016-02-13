@@ -4,10 +4,12 @@
   "profile": "serverless-v0.1.5",
   "location": "https://github.com/...",
   "author": "",
-  "description": "A Slick New Serverless Project",
+  "description": "stmr api",
   "custom": {},
   "templates": {},
-  "plugins": [],
+  "plugins": [
+    "serverless-optimizer-plugin"
+  ],
   "cloudFormation": {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "The AWS CloudFormation template for this Serverless application's resources outside of Lambdas and Api Gateway",

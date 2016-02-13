@@ -7,24 +7,18 @@ require('angular-ui-router');
 require('ui-router-extras');
 require('ocLazyLoad');
 
-var AppController = require('./controller');
-
-var setupNg = require('./setup/setupNg');
-var setupRouter = require('./setup/router');
-var setupOptionalSlash = require('./setup/optionalSlash');
-
 var appName = 'strmr';
 
 var appDeps = [
     'ui.router',
     'oc.lazyLoad',
     'ct.ui.router.extras',
-    require('app/modules/location').name,
-    require('app/common/forms/focus').name
+    require('app/modules/location'),
+    require('app/modules/focus')
 ];
 
 module.exports = angular.module(appName, appDeps)
-    .controller('AppController', AppController)
-    .config(setupOptionalSlash)
-    .config(setupRouter)
-    .run(setupNg);
+    .controller('AppController', require('./controller'))
+    .config(require('./setup/optionalSlash'))
+    .config(require('./setup/router'))
+    .run(require('./setup/setupNg'));

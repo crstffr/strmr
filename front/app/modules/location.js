@@ -1,7 +1,8 @@
 
 module.exports = require('angular')
     .module('module.location', [])
-    .service('location', Location);
+    .service('location', Location)
+    .name;
 
 Location.$inject = ['$timeout', '$rootScope', '$location'];
 

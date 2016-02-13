@@ -1,5 +1,7 @@
 {
   "name": "api",
   "runtime": "nodejs",
-  "custom": {}
+  "custom": {
+    "optimize": true
+  }
 }

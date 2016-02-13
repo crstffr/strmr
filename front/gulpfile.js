@@ -8,9 +8,7 @@ var gulp = require('gulp-help')(require('gulp'), {
 });
 
 var _ = require('lodash');
-
 var sequence = require('run-sequence');
-
 var child_process = require('child_process');
 
 
@@ -148,6 +146,15 @@ gulp.task('test', 'JSHint and unit test the application JS.', function(done) {
     );
 });
 
+gulp.task('deploy', 'Bundle and copy files to Firebase', function(done) {
+    sequence(
+        'bundle',
+        'firebase:deploy',
+        'unbundle',
+        done
+    );
+});
+
 
 /***********************
  * SASS to CSS
@@ -279,13 +286,51 @@ gulp.task('unit-test:watch', [], function (done) {
 });
 
 /***********************
+ * BUNDLE
+ ***********************/
+
+gulp.task('bundle', [], function(done){
+
+    var minimist = require('minimist');
+    var options = minimist(process.argv.slice(2));
+
+    var config = require('./bundle.config');
+    var Bundler = require('jspm-bundler');
+    var bundler = new Bundler(config);
+    bundler.bundle(options.g).then(function(){
+        done();
+    });
+
+});
+
+gulp.task('unbundle', [], function(done){
+
+    var minimist = require('minimist');
+    var options = minimist(process.argv.slice(2));
+
+    var config = require('./bundle.config');
+    var Bundler = require('jspm-bundler');
+    var bundler = new Bundler(config);
+    bundler.unbundle(options.g).then(function(){
+        done();
+    });
+
+});
+
+gulp.task('firebase:deploy', [], function(done){
+    var spawn = require('child_process').spawn;
+    spawn('firebase', ['deploy'], {stdio: 'inherit'}).on('close', function(){
+        done();
+    });
+});
+
+
+/***********************
  * BROWSER SYNC
  ***********************/
 
 
 gulp.task('build:server', [], function (done) {
-    // Starts a BrowserSync server that proxies to the docker instance,
-    // watches source js, css, html and reloads on changes
 
     var browserSync = require('browser-sync');
 
@@ -310,9 +355,6 @@ gulp.task('build:server', [], function (done) {
 });
 
 gulp.task('coverage:server', function (done) {
-
-    // Starts a BrowserSync server that watches and
-    // reloads unit test coverage reports on changes.
 
     var browserSync = require('browser-sync');
 

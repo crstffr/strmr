@@ -1,0 +1,116 @@
+<div class="row">
+
+    <div class="col-md-5">
+
+        <div class="poster">
+
+            <div class="innards" ng-if="movie.loadingPosters">
+                <div class="cssload-loader"></div>
+            </div>
+
+            <img class="innards" ng-if="movie.poster.url" ng-src="{{movie.poster.url}}">
+
+            <span class="flipper-nav">
+
+                <a href=""
+                   class="prev"
+                   title="Prev Poster"
+                   ng-if="movie.posterIndex > 0"
+                   ng-click="movie.prevPoster()">
+                    <i class="fa fa-arrow-left fa-3x"></i>
+                </a>
+                <a href=""
+                   class="next"
+                   title="Next Poster"
+                   ng-click="movie.nextPoster()"
+                   ng-if="movie.posterIndex + 1 < movie.posters.length">
+                    <i class="fa fa-arrow-right fa-3x"></i>
+                </a>
+            </span>
+
+            <div class="others">
+                <img ng-repeat="poster in movie.posters" ng-src="{{poster.url}}" poster-error="movie.removePoster(poster)">
+            </div>
+
+        </div>
+
+        <table class="table table-striped table-sm" ng-if="!movie.loadingDetails && movie.magnet">
+            <tr>
+                <td>Resolution</td>
+                <td>{{movie.magnet.properties.resolution }}</td>
+            </tr>
+            <tr>
+                <td>Quality</td>
+                <td>{{movie.magnet.properties.quality }}</td>
+            </tr>
+            <tr>
+                <td>Codec</td>
+                <td>{{movie.magnet.properties.codec }}</td>
+            </tr>
+            <tr>
+                <td>Group</td>
+                <td>{{movie.magnet.properties.group }}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="col-md-7" ng-if="movie.loadingDetails">
+        <h2>Loading...</h2>
+    </div>
+
+    <div class="col-md-7" ng-if="!movie.loadingDetails">
+        <h2>{{ movie.title }}
+            <small>{{ movie.year }}</small>
+        </h2>
+
+        <p class="blockquote">{{movie.details.plot}}</p>
+
+        <table class="table table-striped">
+            <tr>
+                <td width="30%">Rated</td>
+                <td>{{movie.details.rated }}</td>
+            </tr>
+            <tr>
+                <td>Runtime</td>
+                <td>{{movie.details.runtime }}</td>
+            </tr>
+            <tr>
+                <td>Language</td>
+                <td>{{movie.details.language }}</td>
+            </tr>
+            <tr>
+                <td>Released</td>
+                <td>{{movie.details.released }}</td>
+            </tr>
+            <tr>
+                <td>Genre</td>
+                <td>{{movie.details.genre }}</td>
+            </tr>
+            <tr>
+                <td>Rating</td>
+                <td>{{movie.details.imdbRating }}
+                    <small>out of {{movie.details.imdbVotes}} votes</small>
+                </td>
+            </tr>
+            <tr>
+                <td>Director</td>
+                <td>{{movie.details.director }}</td>
+            </tr>
+            <tr>
+                <td>Featuring</td>
+                <td>{{movie.details.actors }}</td>
+            </tr>
+            <tr>
+                <td>Link</td>
+                <td><a target="_blank"
+                       href="http://imdb.com/title/{{movie.details.imdbID}}">Open this Movie in IMDB</a>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+
+</div>

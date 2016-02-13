@@ -13,6 +13,8 @@ module.exports.handler = function (event, context) {
         return;
     }
 
+    console.log(id);
+
     var movie = new Movie(id);
 
     movie.getDetails().then(function(details) {

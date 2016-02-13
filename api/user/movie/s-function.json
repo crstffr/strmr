@@ -2,14 +2,14 @@
   "name": "movie",
   "handler": "user/movie/movie.handler",
   "timeout": 6,
-  "memorySize": 128,
+  "memorySize": 64,
   "custom": {
     "excludePatterns": [],
     "envVars": []
   },
   "endpoints": [
     {
-      "path": "user/{uid}/movie/{movie}",
+      "path": "user/{uid}/{u}/{p}/movies/{movie}",
       "method": "GET",
       "authorizationType": "none",
       "apiKeyRequired": false,

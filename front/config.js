@@ -9,136 +9,12 @@ System.config({
   },
   paths: {
     "github:*": "jspm/github/*",
-    "npm:*": "jspm/npm/*"
-  },
-  bundles: {
-    "bundle/lodash.min.js": [
-      "npm:lodash@4.0.1",
-      "npm:lodash@4.0.1/lodash",
-      "github:jspm/nodelibs-process@0.1.2",
-      "github:jspm/nodelibs-process@0.1.2/index",
-      "npm:process@0.11.2",
-      "npm:process@0.11.2/browser"
-    ],
-    "bundle/angular.min.js": [
-      "github:angular/bower-angular@1.4.9",
-      "github:angular/bower-angular@1.4.9/angular"
-    ],
-    "bundle/style.min.js": [
-      "style/style.js",
-      "github:necolas/normalize.css@3.0.3",
-      "github:twbs/bootstrap@4.0.0-alpha/css/bootstrap.min.css!github:systemjs/plugin-css@0.1.20",
-      "style/css/fontawesome.min.css!github:systemjs/plugin-css@0.1.20",
-      "style/css/app.min.css!github:systemjs/plugin-css@0.1.20",
-      "github:necolas/normalize.css@3.0.3/normalize.css!github:systemjs/plugin-css@0.1.20"
-    ],
-    "bundle/common.min.js": [
-      "github:crstffr/strmr-common@master",
-      "github:crstffr/strmr-common@master/index",
-      "github:crstffr/strmr-common@master/current",
-      "github:crstffr/strmr-common@master/auth",
-      "github:crstffr/strmr-common@master/request",
-      "github:crstffr/strmr-common@master/settings",
-      "npm:rpg@0.1.0",
-      "npm:promise@7.1.1",
-      "github:crstffr/strmr-common@master/models/user",
-      "github:crstffr/strmr-common@master/refs/root",
-      "github:crstffr/strmr-common@master/refs/auth",
-      "npm:superagent-promise@1.1.0",
-      "npm:superagent@1.7.2",
-      "npm:rpg@0.1.0/lib/rpg",
-      "npm:promise@7.1.1/index",
-      "github:crstffr/strmr-common@master/refs/users",
-      "github:crstffr/strmr-common@master/models/movie",
-      "npm:firebase@2.4.0",
-      "npm:superagent-promise@1.1.0/index",
-      "npm:superagent@1.7.2/lib/client",
-      "github:crstffr/strmr-common@master/refs/movies",
-      "npm:promise@7.1.1/lib/index",
-      "npm:firebase@2.4.0/lib/firebase-web",
-      "npm:component-emitter@1.2.0",
-      "npm:reduce-component@1.0.1",
-      "npm:promise@7.1.1/lib/done",
-      "npm:promise@7.1.1/lib/finally",
-      "npm:promise@7.1.1/lib/synchronous",
-      "npm:promise@7.1.1/lib/es6-extensions",
-      "npm:promise@7.1.1/lib/node-extensions",
-      "npm:promise@7.1.1/lib/core",
-      "github:jspm/nodelibs-buffer@0.1.0",
-      "npm:component-emitter@1.2.0/index",
-      "npm:reduce-component@1.0.1/index",
-      "npm:asap@2.0.3",
-      "npm:asap@2.0.3/raw",
-      "github:jspm/nodelibs-buffer@0.1.0/index",
-      "github:jspm/nodelibs-domain@0.1.0",
-      "npm:asap@2.0.3/asap",
-      "npm:buffer@3.6.0",
-      "npm:asap@2.0.3/browser-raw",
-      "github:jspm/nodelibs-domain@0.1.0/index",
-      "npm:buffer@3.6.0/index",
-      "npm:domain-browser@1.1.7",
-      "npm:base64-js@0.0.8",
-      "npm:ieee754@1.1.6",
-      "npm:isarray@1.0.0",
-      "npm:domain-browser@1.1.7/index",
-      "npm:base64-js@0.0.8/lib/b64",
-      "npm:ieee754@1.1.6/index",
-      "npm:isarray@1.0.0/index",
-      "github:jspm/nodelibs-events@0.1.1",
-      "github:jspm/nodelibs-events@0.1.1/index",
-      "npm:events@1.0.2",
-      "npm:events@1.0.2/events"
-    ],
-    "bundle/strmr.min.js": [
-      "app/app.js",
-      "npm:promise.prototype.finally@1.0.1",
-      "github:ocombe/ocLazyLoad@1.0.9",
-      "app/controller.js",
-      "app/setup/router.js",
-      "github:angular-ui/ui-router@0.2.16",
-      "github:christopherthielen/ui-router-extras@0.1.0",
-      "app/setup/setupNg.js",
-      "app/modules/location.js",
-      "app/setup/optionalSlash.js",
-      "app/common/forms/focus.js",
-      "npm:promise.prototype.finally@1.0.1/finally",
-      "github:ocombe/ocLazyLoad@1.0.9/dist/ocLazyLoad",
-      "app/futureStates.js",
-      "ng.js",
-      "github:angular-ui/ui-router@0.2.16/angular-ui-router",
-      "github:christopherthielen/ui-router-extras@0.1.0/release/ct-ui-router-extras"
-    ],
-    "bundle/route.index.min.js": [
-      "app/routes/index.route.js",
-      "app/routes/index.ctrl.js",
-      "app/services/login.js",
-      "app/routes/index.layout.html!github:systemjs/plugin-text@0.0.4",
-      "ng.js"
-    ],
-    "bundle/route.auth.min.js": [
-      "app/routes/auth/auth.route.js"
-    ],
-    "bundle/route.auth.login.min.js": [
-      "app/routes/auth/login/auth.login.route.js",
-      "app/routes/auth/login/auth.login.ctrl.js",
-      "app/routes/auth/login/auth.login.min.css!github:systemjs/plugin-css@0.1.20",
-      "ng.js",
-      "app/services/login.js",
-      "app/routes/auth/login/auth.login.html!github:systemjs/plugin-text@0.0.4"
-    ],
-    "bundle/route.library.min.js": [
-      "app/routes/library/library.route.js",
-      "app/routes/library/home/library.home.ctrl.js",
-      "ng.js",
-      "app/routes/library/home/library.home.html!github:systemjs/plugin-text@0.0.4",
-      "github:crstffr/strmr-common@master/connectors/api.user.movies",
-      "npm:string-format@0.5.0",
-      "npm:string-format@0.5.0/lib/string-format"
-    ]
+    "npm:*": "jspm/npm/*",
+    "cdnjs/*": "https://cdnjs.cloudflare.com/ajax/libs/*"
   },
 
   map: {
-    "angular": "github:angular/bower-angular@1.4.9",
+    "angular": "github:angular/bower-angular@1.5.0",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.16",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
@@ -147,9 +23,11 @@ System.config({
     "core-js": "npm:core-js@1.2.5",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "github:angular/bower-angular@1.4.9/angular": "cdnjs/angular.js/1.4.9/angular.min.js",
     "html": "github:systemjs/plugin-text@0.0.4",
-    "lodash": "npm:lodash@4.0.1",
+    "lodash": "npm:lodash@4.3.0",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
+    "npm:lodash@4.0.1/index.js": "cdnjs/lodash.js/4.0.1/lodash.min.js",
     "ocLazyLoad": "github:ocombe/ocLazyLoad@1.0.9",
     "parse-torrent-name": "npm:parse-torrent-name@0.5.4",
     "promise": "npm:promise@7.1.1",
@@ -161,7 +39,7 @@ System.config({
     "text": "github:systemjs/plugin-text@0.0.4",
     "ui-router-extras": "github:christopherthielen/ui-router-extras@0.1.0",
     "github:angular-ui/ui-router@0.2.16": {
-      "angular": "github:angular/bower-angular@1.4.9"
+      "angular": "github:angular/bower-angular@1.5.0"
     },
     "github:crstffr/strmr-common@master": {
       "firebase": "npm:firebase@2.4.0",
@@ -527,6 +405,10 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:lodash@4.0.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:lodash@4.3.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:miller-rabin@4.0.0": {

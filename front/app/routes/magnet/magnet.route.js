@@ -1,6 +1,9 @@
 
+
 module.exports = require('angular')
-    .module('route.magnet', [])
+    .module('route.magnet', [
+        require('app/components/movie/movie.module')
+    ])
     .config(Route);
 
 Route.$inject = ['$stateProvider'];

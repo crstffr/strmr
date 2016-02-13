@@ -29,12 +29,6 @@ function Ng() {
         }
     });
 
-    this.ready = function() {
-        return Promise.all([userReady, varsReady]).then(function(){
-            return _user;
-        });
-    };
-
     var varsReady = new Promise(function(resolve) {
         _varsReady = resolve;
     });
@@ -59,6 +53,12 @@ function Ng() {
         });
     });
 
+    this.ready = function() {
+        return Promise.all([userReady, varsReady]).then(function(){
+            return _user;
+        });
+    };
+
     this.digest = function(fn) {
         fn = (typeof fn === 'function') ? fn : function(){};
         _this.ready().then(function(user) {
@@ -69,16 +69,5 @@ function Ng() {
             });
         });
     };
-
-    /*
-    this.Controller = function(fn, deps) {
-        fn.$inject = deps || [];
-        return fn;
-    };
-
-    this.Module = function(opts) {
-        return angular.module('', [])
-    };
-    */
 
 }

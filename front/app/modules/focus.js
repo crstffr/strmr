@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 /**
  * Set focus on elements with a directive and a broadcast service.
  *
@@ -15,7 +17,7 @@ var eventName = 'setFocus';
 
 var _ = require('lodash');
 
-module.exports = focus;
+module.exports = focus.name;
 
 /**
  * Directive used on form inputs to allow for programmatic focus.

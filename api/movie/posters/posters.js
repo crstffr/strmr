@@ -15,7 +15,7 @@ module.exports.handler = function (event, context) {
 
     var searchEngine = googleImages(keys.cse, keys.api);
     var movie = new Movie(event.id);
-    var query = movie.string;
+    var query = movie.string + ' poster';
 
     movie.getPosters().then(function(posters){
 

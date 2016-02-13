@@ -9,7 +9,7 @@
   },
   "endpoints": [
     {
-      "path": "user/{uid}/movies",
+      "path": "user/{uid}/{u}/{p}/movies",
       "method": "GET",
       "authorizationType": "none",
       "apiKeyRequired": false,

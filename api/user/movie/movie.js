@@ -8,7 +8,7 @@ module.exports.handler = function (event, context) {
     var uid = event.uid;
     var email = event.u;
     var password = event.p;
-    var movieid = event.movie;
+    var movieid = event.movie.replace(/\.strm$/, '');
 
     if (!uid) {
         context.succeed(htmlout({header: 'No user id specified'}));
@@ -37,7 +37,7 @@ module.exports.handler = function (event, context) {
             var plugin = settings.kodi.plugin;
             var output = plugin + encodeURIComponent(movie.magnet);
 
-            context.succeed(output);
+            context.succeed({html: output});
 
         }).catch(function(err){
 

@@ -6,17 +6,13 @@ module.exports = function() {
 
     var _this = this;
 
-    this.link = "";
+    this.link = '';
 
-    ng.digest(function(user){
+    ng.digest(function(user) {
 
         _this.link = userMoviesConn.url(user.id, user.email, user.password);
 
     });
-
-
-
-
 
 };
 

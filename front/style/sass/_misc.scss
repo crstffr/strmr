@@ -24,36 +24,6 @@ button i.fa {
   align-items: center;
 }
 
-.poster {
-  position: relative;
-  margin-bottom: 15px;
-
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: 150%;
-  }
-
-  > .innards {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    background: #f9f9f9;
-    border: 1px solid #ececec;
-    border-radius: 6px;
-  }
-
-  img {
-    width: 100%;
-    border-radius: 6px;
-  }
-
-}
-
 .navbar + .container {
   margin-top: 6em;
 }

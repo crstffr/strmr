@@ -1,5 +1,6 @@
 var _ = require('lodash');
 
+var pad = require('pad');
 var auth = require('strmr-common/auth');
 var htmlout = require('strmr-common/utils/htmlout');
 var userMovieConn = require('strmr-common/connectors/api.user.movie');
@@ -27,11 +28,11 @@ module.exports.handler = function (event, context) {
 
     auth.withPassword(uid, email, password).then(function (user) {
 
-        user.getMovies().then(function(movies){
+        user.getMovies().then(function(movies) {
 
             context.succeed(htmlout({
-                title: 'strmr user movies',
-                header: 'Index of /movies',
+                title: 'Index of /movies/',
+                header: 'Index of /movies/',
                 body: _buildLinks(movies, user)
             }));
 
@@ -47,13 +48,12 @@ module.exports.handler = function (event, context) {
     function _buildLinks(movies, user) {
 
         var out = '';
-        out += '<hr><pre>';
+        out += '<hr><pre><a href="../">../</a>\n';
 
         _.forEach(movies, function(movie) {
 
-            var url = userMovieConn.url(user.id, movie.string, user.email, user.password);
-            var filename = movie.string + '.strm';
-            out += '<a href="' + url + '">' + filename + '</a>\n';
+            var title = movie.string + '.strm';
+            out += '<a href="' + encodeURIComponent(title) + '">' + title + '</a>\n';
 
         });
 

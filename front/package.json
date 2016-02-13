@@ -21,6 +21,8 @@
     "gulp-sourcemaps": "^1.6.0",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
+    "jspm-bundler": "^0.1.2",
+    "minimist": "^1.2.0",
     "run-sequence": "^1.1.5",
     "sass-jspm-importer": "0.0.6"
   },
@@ -42,7 +44,7 @@
       "css": "github:systemjs/plugin-css@^0.1.18",
       "font-awesome": "npm:font-awesome@^4.5.0",
       "html": "github:systemjs/plugin-text@^0.0.4",
-      "lodash": "npm:lodash@^4.0.0",
+      "lodash": "npm:lodash@^4.3.0",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
       "ocLazyLoad": "github:ocombe/ocLazyLoad@^1.0.9",
       "parse-torrent-name": "npm:parse-torrent-name@^0.5.4",
