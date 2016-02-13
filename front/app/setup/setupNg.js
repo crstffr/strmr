@@ -6,14 +6,16 @@ SetupNg.$inject = [
     '$state',
     '$timeout',
     '$rootScope',
-    'location'
+    'location',
+    '$stateParams'
 ];
 
-function SetupNg($state, $timeout, $rootScope, location) {
+function SetupNg($state, $timeout, $rootScope, location, $stateParams) {
 
     ng.$rootScope = $rootScope;
     ng.location = location;
     ng.$timout = $timeout;
     ng.$state = $state;
+    ng.$stateParams = $stateParams;
 
 }

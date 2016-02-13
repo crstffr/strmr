@@ -44,18 +44,6 @@ module.exports = [
 		type: 'lazyroute'
 	},
 	{
-		stateName: 'app.library.movies',
-		urlPrefix: '/library/movies/',
-		src: 'app/routes/library/movies/library.movies.route',
-		type: 'lazyroute'
-	},
-	{
-		stateName: 'app.library.tvshows',
-		urlPrefix: '/library/tvshows/',
-		src: 'app/routes/library/tvshows/library.tvshows.route',
-		type: 'lazyroute'
-	},
-	{
 		stateName: 'app.magnet',
 		urlPrefix: '/magnet/',
 		src: 'app/routes/magnet/magnet.route',

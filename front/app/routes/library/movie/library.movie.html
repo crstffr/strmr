@@ -1,23 +1,6 @@
 <div class="container" ng-if="user">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div ng-cloak ng-show="ctrl.state.part1">
-                <div class="form-group">
-                    <label>Magnet Link</label>
-                    <input
-                            type="text"
-                            name="link"
-                            focus-on="link"
-                            placeholder="magnet:"
-                            ng-model="ctrl.link"
-                            ng-change="ctrl.id()"
-                            ng-model-options="{ debounce: 250 }"
-                            class="form-control">
-                </div>
-                <div>
-                    <p class="text-danger" ng-bind="ctrl.msgs.error"></p>
-                </div>
-            </div>
 
             <div class="row" ng-if="ctrl.state.addButton">
                 <div class="col-md-12">
@@ -46,9 +29,9 @@
                 </div>
             </div>
 
-            <div ng-cloak ng-show="ctrl.state.part2">
+            <div ng-if="ctrl.ready">
                 <hr>
-                <movie magnet="ctrl.magnet"></movie>
+                <movie magnet="ctrl.movie.magnet"></movie>
                 <hr>
             </div>
 

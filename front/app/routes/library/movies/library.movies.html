@@ -1,0 +1,11 @@
+<div class="container tiles" ng-if="user">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="movie-poster col-md-2" ng-repeat="movie in ctrl.movies">
+                <a href="#/library/movie/{{movie.string}}">
+                    <poster movie="movie"></poster>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
