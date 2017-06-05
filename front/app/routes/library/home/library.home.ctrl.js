@@ -1,6 +1,5 @@
 
 var ng = require('ng');
-var current = require('strmr-common/current');
 var userMoviesConn = require('strmr-common/connectors/api.user.movies');
 
 module.exports = function() {

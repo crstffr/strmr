@@ -1,7 +1,4 @@
-
-var ng = require('ng');
 var auth = require('strmr-common/auth');
-var current = require('strmr-common/current');
 
 module.exports = Login;
 

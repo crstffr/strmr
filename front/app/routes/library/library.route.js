@@ -1,6 +1,4 @@
 
-var ng = require('ng');
-
 module.exports = require('angular')
     .module('route.library', [
         require('app/components/movie'),

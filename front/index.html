@@ -17,7 +17,9 @@
         // This is what allows us to register this site as a
         // handler for magnet protocol links.  Works!
 
-        navigator.registerProtocolHandler("magnet", window.location.origin + "/#/magnet/?uri=%s", "Magnet Links");
+        if (navigator && typeof navigator.registerProtocolHandler === 'function') {
+            navigator.registerProtocolHandler("magnet", window.location.origin + "/#/magnet/?uri=%s", "Magnet Links");
+        }
 
         System.import('style/style');
         System.import('app/app').then(function (module) {

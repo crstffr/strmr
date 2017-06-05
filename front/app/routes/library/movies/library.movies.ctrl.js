@@ -1,6 +1,4 @@
-
 var ng = require('ng');
-var current = require('strmr-common/current');
 
 module.exports = function() {
 

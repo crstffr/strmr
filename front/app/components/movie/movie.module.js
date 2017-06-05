@@ -18,7 +18,7 @@ module.exports = angular
                     scope.posterError();
                 });
             }
-        }
+        };
     })
     .directive('movie', function () {
         return {

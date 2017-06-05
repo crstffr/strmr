@@ -19,6 +19,7 @@ function MovieController() {
     if (!_.isEmpty(this.magnet)) {
         console.log(this.magnet);
         movie = this.magnet.movie;
+        movie.magnet = this.magnet;
     } else {
         movie = new Movie(this.title, this.year);
     }
